@@ -1,11 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
-import { useTheme } from '../context/ThemeContext'
 
 export function GrainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const { theme } = useTheme()
 
-  // 在 paint 前畫 grain + 設 style，避免第一幀用錯 blend/opacity（與 HTML 同步執行時序）
+  // Draw grain and set style before paint to avoid wrong blend/opacity on first frame (matches HTML execution timing)
   useLayoutEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
