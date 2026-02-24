@@ -1,10 +1,11 @@
 import { useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 
 const PC_CLASSES = ['pc1', 'pc2', 'pc3', 'pc4'] as const
 
 function useFadeIn(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLElement>(null)
 
   useEffect(() => {
     const el = ref.current
@@ -35,6 +36,7 @@ export function Projects() {
         {projects.map((p, i) => (
           <ProjectCard
             key={p.id}
+            id={p.id}
             num={String(i + 1).padStart(2, '0')}
             title={p.title}
             sub={p.tags.join(' · ')}
@@ -48,12 +50,14 @@ export function Projects() {
 }
 
 function ProjectCard({
+  id,
   num,
   title,
   sub,
   pc,
   delay,
 }: {
+  id: string
   num: string
   title: string
   sub: string
@@ -63,10 +67,15 @@ function ProjectCard({
   const ref = useFadeIn(0.12)
 
   return (
-    <div
-      ref={ref}
+    <Link
+      ref={ref as React.RefObject<HTMLAnchorElement>}
+      to={`/projects/${id}`}
       className={`project-card ${pc} fade-up`}
-      style={delay != null ? { transitionDelay: `${delay}s` } : undefined}
+      style={{
+        textDecoration: 'none',
+        color: 'inherit',
+        ...(delay != null ? { transitionDelay: `${delay}s` } : {}),
+      }}
     >
       <div className="project-num">{num}</div>
       <div className="project-name">
@@ -74,6 +83,6 @@ function ProjectCard({
         <div className="project-sub">{sub}</div>
       </div>
       <div className="project-arrow">↗</div>
-    </div>
+    </Link>
   )
 }
