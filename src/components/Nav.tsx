@@ -6,6 +6,7 @@ const navItems = [
   { label: 'Projects', href: '/#projects' },
   { label: 'About', href: '/#about' },
   { label: 'Experience', href: '/#experience' },
+  { label: 'Outside of Work', href: '/#outside' },
 ]
 
 function MenuIcon() {
@@ -43,9 +44,11 @@ export function Nav() {
 
         {/* Desktop: links + theme */}
         <ul className="nav-links">
-          <li><a href="/#projects">Projects</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#experience">Experience</a></li>
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
           <li>
             <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label="Toggle theme">
               {theme === 'dark' ? '💡' : '🌙'}

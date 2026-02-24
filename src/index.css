@@ -376,6 +376,14 @@ h1.hero-title {
 
 h1.hero-title em { font-style: italic; }
 
+.hero-title-roles {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  transition: color 0.7s;
+}
+
 .hero-sub {
   font-size: clamp(0.95rem, 1.6vw, 1.15rem);
   color: var(--text-muted);
@@ -432,7 +440,8 @@ h1.hero-title em { font-style: italic; }
 
 #projects.section,
 #about.section,
-#experience.section {
+#experience.section,
+#outside.section {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
@@ -681,6 +690,21 @@ h1.hero-title em { font-style: italic; }
 }
 
 /* ── ABOUT ── */
+.about-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .about-cols {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 .about-content {
   max-width: 48rem;
   display: flex;
@@ -690,14 +714,41 @@ h1.hero-title em { font-style: italic; }
 
 .about-heading {
   font-family: 'Instrument Serif', serif;
-  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 400;
-  line-height: 1.2;
-  margin-bottom: 0;
+  line-height: 1.25;
+  margin-bottom: 2rem;
   transition: color 0.7s;
 }
 
 .about-heading em { font-style: italic; }
+
+.stats-row {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid var(--card-border);
+  margin-bottom: 2.5rem;
+  transition: border-color 0.7s;
+}
+
+.stat-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  display: block;
+  line-height: 1;
+  transition: color 0.7s;
+}
+
+.stat-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  transition: color 0.7s;
+}
 
 .about-subheading {
   font-family: 'Instrument Serif', serif;
@@ -708,8 +759,8 @@ h1.hero-title em { font-style: italic; }
 }
 
 .about-body {
-  font-size: 0.95rem;
-  line-height: 1.8;
+  font-size: 0.9rem;
+  line-height: 1.85;
   color: var(--text-muted);
   transition: color 0.7s;
 }
@@ -719,6 +770,9 @@ h1.hero-title em { font-style: italic; }
   font-weight: 600;
   transition: color 0.7s;
 }
+
+.about-body p { margin-bottom: 1.2rem; }
+.about-body p:last-child { margin-bottom: 0; }
 
 .about-links {
   margin-top: 0.5rem;
@@ -733,6 +787,260 @@ h1.hero-title em { font-style: italic; }
 }
 
 .about-body a:hover { border-color: var(--text); }
+
+/* About: Outside of Work */
+.about-outside { margin-top: 0.5rem; }
+
+.about-section-heading {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1.5rem, 3vw, 1.875rem);
+  font-weight: 400;
+  margin-bottom: 0.75rem;
+  transition: color 0.7s;
+}
+
+.about-outside-intro {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  max-width: 28rem;
+  transition: color 0.7s;
+}
+
+/* Scattered layout: items at different positions for a casual, cute feel */
+.about-floating-list {
+  position: relative;
+  min-height: 26rem;
+  margin-bottom: 2rem;
+}
+
+.about-floating-item {
+  position: absolute;
+  max-width: 18rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.about-float-1 { top: 0; left: 0; }
+.about-float-2 { top: 42%; left: 0; }
+.about-float-3 { top: 80%; left: 0; }
+.about-float-4 { top: 18%; right: 0; left: auto; }
+
+.about-float-4::before {
+  content: '';
+  position: absolute;
+  left: -0.6rem;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blob1);
+  transition: background 0.7s;
+}
+
+@media (max-width: 768px) {
+  .about-floating-list {
+    position: static;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .about-floating-item {
+    position: static;
+    max-width: none;
+  }
+  .about-float-4::before { display: none; }
+}
+
+.about-floating-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  display: inline-block;
+  animation: about-emoji-float 3s ease-in-out infinite;
+}
+
+@keyframes about-emoji-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.about-floating-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  transition: color 0.7s;
+}
+
+.about-floating-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+  transition: color 0.7s;
+}
+
+.about-ext-link {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.about-ext-link:hover { border-color: var(--text); }
+
+/* About: Corner Maps, Medium, Film, Places */
+.about-subsection { margin-top: 0.5rem; }
+
+.about-subsection-heading {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  transition: color 0.7s;
+}
+
+.about-cornermaps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .about-cornermaps-grid { grid-template-columns: 1fr; }
+}
+
+.about-cornermaps-city {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+  transition: color 0.7s;
+}
+
+.about-cornermaps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.about-cornermaps-link {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s;
+}
+.about-cornermaps-link:hover { color: var(--text); }
+.about-cornermaps-link svg { opacity: 0; transition: opacity 0.2s; }
+.about-cornermaps-link:hover svg { opacity: 1; }
+
+.about-medium-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.about-medium-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  margin: 0 -1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s;
+}
+.about-medium-item:hover { background: var(--card-border); }
+
+.about-medium-thumb {
+  width: 5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: var(--card-border);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: background 0.7s, border-color 0.7s;
+}
+
+.about-medium-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  transition: color 0.7s;
+}
+.about-medium-item:hover .about-medium-title { color: var(--text); }
+
+.about-medium-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin: 0;
+  transition: color 0.7s;
+}
+
+.about-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .about-photos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.about-photo-placeholder {
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
+  background: var(--card-border);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: background 0.7s, border-color 0.7s;
+}
+
+.about-photos-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 0.75rem;
+  margin-bottom: 0;
+  transition: color 0.7s;
+}
+
+.about-places-intro {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  transition: color 0.7s;
+}
+
+.about-places-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-place-tag {
+  font-size: 0.75rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--card-border);
+  color: var(--text-muted);
+  transition: background 0.7s, color 0.7s;
+}
 
 /* ── EXPERIENCE ── */
 .experience-list {

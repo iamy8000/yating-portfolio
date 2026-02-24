@@ -21,8 +21,10 @@ const experiences: ExperienceItem[] = [
     period: 'Aug 2024 – Jul 2025',
     title: 'Frontend Engineer',
     company: 'Tymeline',
-    description:
-      'Built core UI components for an AI-powered performance platform, leading frontend development and improving key workflows for real-time goal tracking.',
+    // description:
+    //   'Built core UI components for an AI-powered performance platform, leading frontend development and improving key workflows for real-time goal tracking.',
+      description:
+      'Built core UI components for an AI-powered performance platform.',
     tags: ['React', 'JavaScript', 'Redux', 'TypeScript', 'Playwright', 'AWS'],
   },
   {
@@ -30,7 +32,7 @@ const experiences: ExperienceItem[] = [
     title: 'Software Engineer',
     company: 'IpserLab',
     description:
-      'Worked on a WebRTC video conferencing platform, leading UI revamps and improving accessibility, interaction, and UX. Modernized legacy components to React standards.',
+      'Worked on a WebRTC video conferencing platform, leading UI revamps and improving accessibility, interaction, and UX.',
     tags: ['React', 'JavaScript', 'WebRTC'],
   },
   {
@@ -46,7 +48,7 @@ const experiences: ExperienceItem[] = [
     title: 'Frontend Engineer',
     company: 'Tagnology',
     description:
-      'Built and shipped features across 6 projects, from a Web3 NFT marketplace to an Instagram chatbot flow builder. Led frontend development from scratch.',
+      'Built and shipped features across 6 projects, from a Web3 NFT marketplace to an Instagram chatbot flow builder.',
     tags: ['React', 'JavaScript', 'Next.js', 'Web3', 'HTML', 'CSS'],
   },
   {
