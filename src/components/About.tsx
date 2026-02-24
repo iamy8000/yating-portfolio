@@ -35,16 +35,15 @@ export function About() {
             Built with care,<br /><em>pixel by pixel.</em>
           </h2>
           <div className="stats-row">
-            <div><span className="stat-num">8+</span><div className="stat-label">Years Exp</div></div>
+            <div><span className="stat-num">4+</span><div className="stat-label">Years Exp</div></div>
             <div><span className="stat-num">60</span><div className="stat-label">Projects</div></div>
-            <div><span className="stat-num">32</span><div className="stat-label">Clients</div></div>
           </div>
         </div>
         <div ref={refRight} className="about-body fade-up" style={{ transitionDelay: '0.12s' }}>
           <p>I'm a frontend engineer with a love for clean UI, great performance, and details that make people smile. I care about both the code and the experience it creates.</p>
           <p>Based in NYC, open to relocate. Currently looking for my next role — full-time or contract.</p>
           <p>
-            <a href="https://linkedin.com/in/yating-yang" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a href="https://www.linkedin.com/in/yang-ya-ting/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
             {' \u2003 '}
             <a href="mailto:yating.yy.yang@gmail.com">yating.yy.yang@gmail.com ↗</a>
           </p>

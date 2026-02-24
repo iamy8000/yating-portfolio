@@ -1,11 +1,7 @@
 import { useRef, useEffect } from 'react'
+import { projects } from '../data/projects'
 
-const PROJECTS = [
-  { num: '01', title: 'Interactive Map App', sub: 'React · Mapbox · TypeScript', pc: 'pc1' },
-  { num: '02', title: 'Design System', sub: 'Component Library · Storybook · A11y', pc: 'pc2', delay: 0.08 },
-  { num: '03', title: 'E-commerce Platform', sub: 'Next.js · Tailwind · Stripe', pc: 'pc3', delay: 0.16 },
-  { num: '04', title: 'Data Dashboard', sub: 'D3.js · React · REST API', pc: 'pc4', delay: 0.24 },
-] as const
+const PC_CLASSES = ['pc1', 'pc2', 'pc3', 'pc4'] as const
 
 function useFadeIn(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
@@ -36,8 +32,15 @@ export function Projects() {
     <section className="section" id="projects">
       <p className="section-label">Selected Projects</p>
       <div className="projects-grid">
-        {PROJECTS.map((p) => (
-          <ProjectCard key={p.num} {...p} />
+        {projects.map((p, i) => (
+          <ProjectCard
+            key={p.id}
+            num={String(i + 1).padStart(2, '0')}
+            title={p.title}
+            sub={p.tags.join(' · ')}
+            pc={PC_CLASSES[i % PC_CLASSES.length]}
+            delay={i * 0.08}
+          />
         ))}
       </div>
     </section>
@@ -54,7 +57,7 @@ function ProjectCard({
   num: string
   title: string
   sub: string
-  pc: string
+  pc: (typeof PC_CLASSES)[number]
   delay?: number
 }) {
   const ref = useFadeIn(0.12)
