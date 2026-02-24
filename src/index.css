@@ -53,7 +53,7 @@ body {
 }
 
 /* ── NAV ── */
-nav {
+nav.nav-bar {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 200;
@@ -61,12 +61,14 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 3rem;
+  transition: background 0.7s, color 0.7s;
 }
 
 .nav-logo {
   font-family: 'Instrument Serif', serif;
   font-size: 1.15rem;
   color: var(--text);
+  text-decoration: none;
   transition: color 0.7s;
   line-height: 1.2;
 }
@@ -99,6 +101,123 @@ nav {
 }
 
 .nav-links a:hover { opacity: 1; }
+
+.nav-mobile-actions {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-menu-btn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.7s;
+}
+
+@media (max-width: 768px) {
+  nav.nav-bar {
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-links { display: none; }
+  .nav-mobile-actions { display: flex; }
+}
+
+/* Mobile full-screen overlay */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  background: var(--bg);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background 0.7s;
+}
+
+@media (max-width: 768px) {
+  .nav-overlay {
+    display: flex;
+  }
+}
+
+.nav-overlay-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nav-overlay-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.7s;
+}
+
+.nav-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav-overlay-link {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
+}
+
+.nav-overlay-open .nav-overlay-link {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-overlay-link:hover {
+  color: var(--text);
+}
+
+.nav-overlay-resume {
+  font-size: 1rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.2s;
+}
+
+.nav-overlay-open .nav-overlay-resume {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-overlay-resume:hover {
+  color: var(--text);
+}
 
 .lamp-btn {
   background: none;
