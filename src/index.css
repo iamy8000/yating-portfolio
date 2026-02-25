@@ -353,7 +353,7 @@ nav.nav-bar {
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 880px;
+  /* max-width: 880px; */
 }
 
 .hero-sub a {
@@ -389,9 +389,10 @@ h1.hero-title em { font-style: italic; }
 .hero-rotator-wrap {
   display: inline-block;
   overflow: hidden;
-  height: 1.2em;
+  height: 0.6em;
+  max-width: 100%;
   padding-right: 0.08em;
-  vertical-align: bottom;
+  /* vertical-align: bottom; */
 }
 
 .hero-rotator {
@@ -410,6 +411,10 @@ h1.hero-title em { font-style: italic; }
   line-height: 1.2em;
   flex-shrink: 0;
   font-style: italic;
+  font-size: 0.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hero-title-roles {
