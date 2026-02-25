@@ -30,20 +30,34 @@ function useFadeIn(threshold = 0.12) {
 
 export function Projects() {
   return (
-    <section className="section" id="projects">
-      <p className="section-label">Selected Projects</p>
-      <div className="projects-grid">
-        {projects.map((p, i) => (
-          <ProjectCard
-            key={p.id}
-            id={p.id}
-            num={String(i + 1).padStart(2, '0')}
-            title={p.title}
-            sub={p.tags.join(' · ')}
-            pc={PC_CLASSES[i % PC_CLASSES.length]}
-            delay={i * 0.08}
-          />
-        ))}
+    <section className="section section-projects" id="projects">
+      <div className="projects-blob-wrap">
+        {/* <div className="projects-blob projects-blob-1" aria-hidden /> */}
+        {/* <div className="projects-blob projects-blob-2" aria-hidden /> */}
+      </div>
+      <div className="projects-bg-word" aria-hidden>
+        Selected Projects
+      </div>
+      <div className="projects-constrain">
+        {/* <div className="projects-bg-word" aria-hidden>
+          Selected Projects
+        </div> */}
+        <div className="projects-inner">
+          <p className="section-label">Selected Projects</p>
+          <div className="projects-grid">
+            {projects.map((p, i) => (
+              <ProjectCard
+                key={p.id}
+                id={p.id}
+                num={String(i + 1).padStart(2, '0')}
+                title={p.title}
+                sub={p.tags.join(' · ')}
+                pc={PC_CLASSES[i % PC_CLASSES.length]}
+                delay={i * 0.08}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

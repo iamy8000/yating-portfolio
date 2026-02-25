@@ -31,6 +31,7 @@ export function AboutPage() {
       <Nav />
       <main className="page-main">
         <MeSection />
+        <hr className="rule" />
         <Experience />
         <hr className="rule" />
         <OutsideOfWork />

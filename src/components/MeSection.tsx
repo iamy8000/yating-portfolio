@@ -27,6 +27,7 @@ export function MeSection() {
 
   return (
     <section className="section" id="me" style={{ marginTop: '2rem' }}>
+      <p className="section-label">Me</p>
       <div className="me-content">
         <h2 className="about-heading">
           Born and raised in Taiwan. Three years in DC and Maryland, now based in NYC.
@@ -34,7 +35,6 @@ export function MeSection() {
         </h2>
         <div ref={ref} className="me-photos fade-up">
           <div className="me-photo-wrap">
-            {/* Replace with <img src="/me-1.jpg" alt="Amy" className="me-photo" /> when you have photos */}
             <div className="me-photo-placeholder">Photo 1</div>
           </div>
           <div className="me-photo-wrap">

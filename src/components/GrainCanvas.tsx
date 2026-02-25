@@ -1,10 +1,9 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function GrainCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  // Draw grain and set style before paint to avoid wrong blend/opacity on first frame (matches HTML execution timing)
-  useLayoutEffect(() => {
+  useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
@@ -27,10 +26,16 @@ export function GrainCanvas() {
       ctx.putImageData(imageData, 0, 0)
     }
 
-    render(canvas, ctx)
+    let rafId = 0
     const onResize = () => render(canvas, ctx)
-    window.addEventListener('resize', onResize)
-    return () => window.removeEventListener('resize', onResize)
+    rafId = requestAnimationFrame(() => {
+      render(canvas, ctx)
+      window.addEventListener('resize', onResize)
+    })
+    return () => {
+      cancelAnimationFrame(rafId)
+      window.removeEventListener('resize', onResize)
+    }
   }, [])
 
   return <canvas ref={canvasRef} className="grain-canvas" aria-hidden />
