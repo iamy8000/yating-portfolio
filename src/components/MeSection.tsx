@@ -26,9 +26,11 @@ export function MeSection() {
   const ref = useFadeIn(0.12)
 
   return (
-    <section className="section" id="me" style={{ marginTop: '2rem' }}>
-      <p className="section-label">Me</p>
-      <div className="me-content">
+    <section className="section section-me" id="me" style={{ marginTop: '2rem' }}>
+      <div className="about-bg-word" aria-hidden>About Me</div>
+      <div className="me-inner">
+        <p className="section-label">About Me</p>
+        <div className="me-content">
         <h2 className="about-heading">
           Born and raised in Taiwan. Three years in DC and Maryland, now based in NYC.
           I&apos;m a front-end engineer and I love running — 63/184 cafés in NYC checked off and counting!
@@ -47,6 +49,7 @@ export function MeSection() {
             <div className="me-photo-placeholder">Photo 4</div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   )

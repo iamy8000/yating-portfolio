@@ -7,7 +7,7 @@ const outsideCards = [
     description: (
       <>
         I love running. Currently training for a half marathon. Check out my{' '}
-        <a href="#" target="_blank" rel="noopener noreferrer">Strava</a> — and I&apos;ll kudo back!
+        <a href="https://strava.app.link/h9f0NYuJ20b" target="_blank" rel="noopener noreferrer">Strava</a> — and I&apos;ll kudo back!
       </>
     ),
   },
@@ -16,7 +16,7 @@ const outsideCards = [
     title: 'Writing',
     description: (
       <>
-        I write on <a href="#" target="_blank" rel="noopener noreferrer">Medium</a> — travel, life reflections, and some random thoughts.
+        I write on <a href="https://medium.com/@iamy8000" target="_blank" rel="noopener noreferrer">Medium</a> — travel, life reflections, and some random thoughts.
       </>
     ),
   },
@@ -26,7 +26,7 @@ const outsideCards = [
     description: (
       <>
         I curate lists for drinks, food, and laptop-friendly cafes on{' '}
-        <a href="#" target="_blank" rel="noopener noreferrer">Corner Maps</a> — my fav app in 2025 &amp; 2026!
+        <a href="https://www.corner.inc/iamy8000" target="_blank" rel="noopener noreferrer">Corner Maps</a> — my fav app in 2025 &amp; 2026!
       </>
     ),
   },
@@ -59,9 +59,11 @@ export function OutsideOfWork() {
   const ref4 = useFadeIn(0.12)
 
   return (
-    <section className="section" id="outside">
-      <p className="section-label">Outside of Work</p>
-      <div ref={ref} className="outside-grid fade-up">
+    <section className="section section-outside" id="outside">
+      <div className="about-bg-word" aria-hidden>Outside of Work</div>
+      <div className="outside-inner">
+        <p className="section-label">Outside of Work</p>
+        <div ref={ref} className="outside-grid fade-up">
         {outsideCards.map((card) => (
           <div key={card.title} className="outside-card">
             <span className="outside-icon" aria-hidden>{card.emoji}</span>
@@ -94,6 +96,7 @@ export function OutsideOfWork() {
             ))}
           </div>
         </div>
+      </div>
       </div>
     </section>
   )

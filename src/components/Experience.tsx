@@ -99,9 +99,11 @@ function useFadeIn(threshold = 0.12) {
 
 export function Experience() {
   return (
-    <section className="section" id="experience">
-      <p className="section-label">Work Experience</p>
-      <div className="experience-list">
+    <section className="section section-experience" id="experience">
+      <div className="about-bg-word" aria-hidden>Work Experience</div>
+      <div className="experience-inner">
+        <p className="section-label">Work Experience</p>
+        <div className="experience-list">
         {experiences.map((exp, i) => (
           <ExperienceRow key={i} exp={exp} delay={i * 0.05} />
         ))}
@@ -124,6 +126,7 @@ export function Experience() {
             View Full Resume ↗
           </a>
         </p>
+      </div>
       </div>
     </section>
   )
