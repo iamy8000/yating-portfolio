@@ -9,6 +9,8 @@ export function GrainCanvas() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
+    const isMobileOrTablet = () => window.innerWidth <= 1024
+
     function render(c: HTMLCanvasElement, ctx: CanvasRenderingContext2D) {
       const w = window.innerWidth
       const h = window.innerHeight
@@ -16,12 +18,13 @@ export function GrainCanvas() {
       c.height = h
       const imageData = ctx.createImageData(w, h)
       const data = imageData.data
+      const alphaRange = isMobileOrTablet() ? 10 : 90
       for (let i = 0; i < data.length; i += 4) {
         const val = Math.random() * 255
         data[i] = val
         data[i + 1] = val
         data[i + 2] = val
-        data[i + 3] = Math.random() * 90 + 35
+        data[i + 3] = Math.random() * alphaRange + 35
       }
       ctx.putImageData(imageData, 0, 0)
     }
