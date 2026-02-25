@@ -6,11 +6,11 @@ import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { About } from './components/About'
-import { Experience } from './components/Experience'
 import { OutsideOfWork } from './components/OutsideOfWork'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ProjectDetail } from './pages/ProjectDetail'
+import { AboutPage } from './pages/AboutPage'
 
 function ThemeSync({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme()
@@ -43,11 +43,7 @@ function HomePage() {
       <hr className="rule" />
       <Projects />
       <hr className="rule" />
-      <About />
-      <hr className="rule" />
-      <Experience />
-      <hr className="rule" />
-      <OutsideOfWork />
+      <About teaser />
       <hr className="rule" />
       <Contact />
       <Footer />
@@ -62,6 +58,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/projects/:projectId" element={<ProjectDetail />} />
           </Routes>
         </BrowserRouter>

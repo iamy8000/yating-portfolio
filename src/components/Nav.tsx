@@ -1,12 +1,14 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 
+const RESUME_URL = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing' // Replace YOUR_FILE_ID with your Google Drive file ID
+
 const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '/#projects' },
-  { label: 'About', href: '/#about' },
-  { label: 'Experience', href: '/#experience' },
-  { label: 'Outside of Work', href: '/#outside' },
+  { label: 'Home', href: '/', isRoute: true },
+  { label: 'Projects', href: '/#projects', isRoute: false },
+  { label: 'About', href: '/about', isRoute: true },
+  { label: 'Resume', href: RESUME_URL, isRoute: false, external: true },
 ]
 
 function MenuIcon() {
@@ -46,7 +48,11 @@ export function Nav() {
         <ul className="nav-links">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a href={item.href}>{item.label}</a>
+              {item.isRoute ? (
+                <Link to={item.href}>{item.label}</Link>
+              ) : (
+                <a href={item.href} {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{item.label}</a>
+              )}
             </li>
           ))}
           <li>
@@ -87,15 +93,28 @@ export function Nav() {
         </button>
         <div className="nav-overlay-content">
           {navItems.map((item, i) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="nav-overlay-link"
-              onClick={closeMobile}
-              style={{ transitionDelay: `${0.1 + i * 0.06}s` }}
-            >
-              {item.label}
-            </a>
+            item.isRoute ? (
+              <Link
+                key={item.href}
+                to={item.href}
+                className="nav-overlay-link"
+                onClick={closeMobile}
+                style={{ transitionDelay: `${0.1 + i * 0.06}s` }}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className="nav-overlay-link"
+                onClick={closeMobile}
+                style={{ transitionDelay: `${0.1 + i * 0.06}s` }}
+                {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                {item.label}
+              </a>
+            )
           ))}
           <a
             href="/Resume_Yating_Amy_Yang.pdf"
