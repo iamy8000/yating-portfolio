@@ -1,12 +1,19 @@
 import { useRef, useEffect } from 'react'
 
-const FILM_PICS = [
+const FILM_PICS: { src: string; className: string; objectPosition?: string }[] = [
   { src: '/images/film-pic-1.jpg', className: '' },
   { src: '/images/film-pic-2.jpg', className: '' },
   { src: '/images/film-pic-3.png', className: 'tall' },
   { src: '/images/film-pic-4.png', className: 'wide' },
   { src: '/images/film-pic-5.jpg', className: 'tall' },
-  { src: '/images/film-pic-6.jpg', className: 'wide' },
+  { src: '/images/film-pic-9.jpg', className: 'wide', objectPosition: 'center 85%' },
+  { src: '/images/film-pic-10.jpg', className: 'wide', objectPosition: 'center 68%' },
+]
+
+const SAME_ROW_PICS = [
+  { src: '/images/film-pic-6.jpg', className: '' },
+  { src: '/images/film-pic-7.jpg', className: '' },
+  { src: '/images/film-pic-8.jpg', className: '' },
 ]
 
 const outsideCards = [
@@ -84,10 +91,22 @@ export function OutsideOfWork() {
 
       <div className="about-content">
         <div ref={ref4} className="about-subsection fade-up" style={{ transitionDelay: '0.26s' }}>
+          <div className="film-pics-row">
+            {SAME_ROW_PICS.map((item, i) => (
+              <div key={i} className="photo-cell">
+                <img src={item.src} alt="" className="film-photo-img" />
+              </div>
+            ))}
+          </div>
           <div className="photos-grid film-photos-grid">
             {FILM_PICS.map((item, i) => (
               <div key={i} className={`photo-cell ${item.className}`.trim()}>
-                <img src={item.src} alt="" className="film-photo-img" />
+                <img
+                  src={item.src}
+                  alt=""
+                  className="film-photo-img"
+                  style={item.objectPosition != null ? { objectPosition: item.objectPosition } : undefined}
+                />
               </div>
             ))}
           </div>
