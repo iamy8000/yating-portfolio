@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 
-const RESUME_URL = 'https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing' // Replace YOUR_FILE_ID with your Google Drive file ID
+const RESUME_URL = 'https://drive.google.com/file/d/15kAqEEE7kAjZWnxhAWhMQeB1yyEK-lDV/view?usp=sharing' 
 
 const navItems = [
   { label: 'Home', href: '/', isRoute: true },
