@@ -68,7 +68,7 @@ nav.nav-bar {
   align-items: center;
   padding: 1.4rem 3rem;
   padding-top: max(1.4rem, env(safe-area-inset-top));
-  background: var(--bg);
+  /* background: var(--bg); */
   transition: background 0.7s, color 0.7s;
 }
 
