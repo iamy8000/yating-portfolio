@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { ThemeProvider, useTheme } from './context/ThemeContext'
+import { LanguageProvider } from './context/LanguageContext'
 import { GrainCanvas } from './components/GrainCanvas'
 import { Nav } from './components/Nav'
 import { Hero } from './components/Hero'
@@ -57,6 +58,7 @@ function HomePage() {
 export default function App() {
   return (
     <ThemeProvider>
+      <LanguageProvider>
       <ThemeSync>
         <BrowserRouter>
           <Routes>
@@ -66,6 +68,7 @@ export default function App() {
           </Routes>
         </BrowserRouter>
       </ThemeSync>
+      </LanguageProvider>
     </ThemeProvider>
   )
 }

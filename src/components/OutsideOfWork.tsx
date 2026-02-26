@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(() =>
@@ -36,37 +37,11 @@ const ALL_FILM_PICS_MOBILE = [
   ...FILM_PICS.slice(5, 7),
 ]
 
-const outsideCards = [
-  {
-    emoji: '🏃‍♀️',
-    title: 'Running',
-    description: (
-      <>
-        I love running. Currently training for a half marathon. Check out my{' '}
-        <a href="https://strava.app.link/h9f0NYuJ20b" target="_blank" rel="noopener noreferrer">Strava</a> — and I&apos;ll kudo back!
-      </>
-    ),
-  },
-  {
-    emoji: '✍️',
-    title: 'Writing',
-    description: (
-      <>
-        I write on <a href="https://medium.com/@iamy8000" target="_blank" rel="noopener noreferrer">Medium</a> — travel, life reflections, and some random thoughts.
-      </>
-    ),
-  },
-  {
-    emoji: '🍜',
-    title: 'Corner Maps',
-    description: (
-      <>
-        I curate lists for drinks, food, and laptop-friendly cafes on{' '}
-        <a href="https://www.corner.inc/iamy8000" target="_blank" rel="noopener noreferrer">Corner Maps</a> — my fav app in 2025 &amp; 2026!
-      </>
-    ),
-  },
-]
+const OUTSIDE_LINKS = {
+  STRAVA: { href: 'https://strava.app.link/h9f0NYuJ20b', text: 'Strava' },
+  MEDIUM: { href: 'https://medium.com/@iamy8000', text: 'Medium' },
+  CORNER: { href: 'https://www.corner.inc/iamy8000', text: 'Corner Maps' },
+} as const
 
 function useFadeIn(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
@@ -90,24 +65,47 @@ function useFadeIn(threshold = 0.12) {
   return ref
 }
 
+function injectLinks(desc: string): React.ReactNode {
+  const parts = desc.split(/(?:\{\{)(STRAVA|MEDIUM|CORNER)(?:\}\})/)
+  const result: React.ReactNode[] = []
+  parts.forEach((part, i) => {
+    if (i % 2 === 0) {
+      result.push(part)
+    } else {
+      const link = OUTSIDE_LINKS[part as keyof typeof OUTSIDE_LINKS]
+      if (link) result.push(<a key={part} href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>)
+    }
+  })
+  return <>{result}</>
+}
+
 export function OutsideOfWork() {
+  const { t, tr } = useLanguage()
   const ref = useFadeIn(0.12)
   const ref4 = useFadeIn(0.12)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
+  const outsideCards = [
+    { emoji: '🏃‍♀️' as const, key: 'running' as const },
+    { emoji: '✍️' as const, key: 'writing' as const },
+    { emoji: '🍜' as const, key: 'cornerMaps' as const },
+  ]
+
   return (
     <section className="section section-outside" id="outside">
-      <div className="about-bg-word" aria-hidden>Outside of Work</div>
+      <div className="about-bg-word" aria-hidden>{t('outside.label')}</div>
       <div className="outside-inner">
-        <p className="section-label">Outside of Work</p>
+        <p className="section-label">{t('outside.label')}</p>
         <div ref={ref} className="outside-grid fade-up">
-        {outsideCards.map((card) => (
-          <div key={card.title} className="outside-card">
+        {outsideCards.map((card) => {
+          const data = tr.outside[card.key]
+          return (
+          <div key={card.key} className="outside-card">
             <span className="outside-icon" aria-hidden>{card.emoji}</span>
-            <div className="outside-title">{card.title}</div>
-            <p className="outside-text">{card.description}</p>
+            <div className="outside-title">{data.title}</div>
+            <p className="outside-text">{injectLinks(data.desc)}</p>
           </div>
-        ))}
+        )})}
       </div>
 
       <div className="about-content">

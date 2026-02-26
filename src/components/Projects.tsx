@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
+import { useLanguage } from '../context/LanguageContext'
 
 const PC_CLASSES = ['pc1', 'pc2', 'pc3', 'pc4'] as const
 
@@ -29,6 +30,7 @@ function useFadeIn(threshold = 0.12) {
 }
 
 export function Projects() {
+  const { t, tr } = useLanguage()
   return (
     <section className="section section-projects" id="projects">
       <div className="projects-blob-wrap">
@@ -36,26 +38,25 @@ export function Projects() {
         {/* <div className="projects-blob projects-blob-2" aria-hidden /> */}
       </div>
       <div className="projects-bg-word" aria-hidden>
-        Selected Projects
+        {t('projects.sectionLabel')}
       </div>
       <div className="projects-constrain">
-        {/* <div className="projects-bg-word" aria-hidden>
-          Selected Projects
-        </div> */}
         <div className="projects-inner">
-          <p className="section-label">Selected Projects</p>
+          <p className="section-label">{t('projects.sectionLabel')}</p>
           <div className="projects-grid">
-            {projects.map((p, i) => (
+            {projects.map((p, i) => {
+              const localized = tr.projects.list[p.id as keyof typeof tr.projects.list]
+              return (
               <ProjectCard
                 key={p.id}
                 id={p.id}
                 num={String(i + 1).padStart(2, '0')}
-                title={p.title}
+                title={localized?.title ?? p.title}
                 sub={p.tags.join(' · ')}
                 pc={PC_CLASSES[i % PC_CLASSES.length]}
                 delay={i * 0.08}
               />
-            ))}
+            )})}
           </div>
         </div>
       </div>

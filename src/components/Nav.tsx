@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
+import { useLanguage } from '../context/LanguageContext'
+import type { Locale } from '../i18n/translations'
 
-const RESUME_URL = 'https://drive.google.com/file/d/15kAqEEE7kAjZWnxhAWhMQeB1yyEK-lDV/view?usp=sharing' 
+const RESUME_URL = 'https://drive.google.com/file/d/15kAqEEE7kAjZWnxhAWhMQeB1yyEK-lDV/view?usp=sharing'
 
-const navItems = [
-  { label: 'Home', href: '/', isRoute: true },
-  { label: 'Projects', href: '/#projects', isRoute: false },
-  { label: 'About', href: '/about', isRoute: true },
-  { label: 'Resume', href: RESUME_URL, isRoute: false, external: true },
+const navKeys = [
+  { key: 'home' as const, href: '/', isRoute: true },
+  { key: 'projects' as const, href: '/#projects', isRoute: false },
+  { key: 'about' as const, href: '/about', isRoute: true },
+  { key: 'resume' as const, href: RESUME_URL, isRoute: false, external: true },
 ]
 
 function MenuIcon() {
@@ -32,6 +34,7 @@ function CloseIcon() {
 
 export function Nav() {
   const { theme, toggleTheme } = useTheme()
+  const { t, locale, setLocale } = useLanguage()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const closeMobile = () => setMobileOpen(false)
@@ -41,22 +44,27 @@ export function Nav() {
       <nav className="nav-bar">
         <a href="/" className="nav-logo" onClick={closeMobile}>
           Amy Yang
-          <sub>Frontend Engineer</sub>
+          <sub>{t('nav.subtitle')}</sub>
         </a>
 
-        {/* Desktop: links + theme */}
+        {/* Desktop: links + lang + theme */}
         <ul className="nav-links">
-          {navItems.map((item) => (
+          {navKeys.map((item) => (
             <li key={item.href}>
               {item.isRoute ? (
-                <Link to={item.href}>{item.label}</Link>
+                <Link to={item.href}>{t(`nav.${item.key}`)}</Link>
               ) : (
-                <a href={item.href} {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{item.label}</a>
+                <a href={item.href} {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>{t(`nav.${item.key}`)}</a>
               )}
             </li>
           ))}
+          <li className="nav-lang-wrap">
+            <button type="button" className="nav-lang-btn" onClick={() => setLocale('en' as Locale)} aria-pressed={locale === 'en'}>EN</button>
+            <span className="nav-lang-sep">/</span>
+            <button type="button" className="nav-lang-btn" onClick={() => setLocale('zh-TW')} aria-pressed={locale === 'zh-TW'}>繁中</button>
+          </li>
           <li>
-            <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label="Toggle theme">
+            <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
               {theme === 'dark' ? '💡' : '🌙'}
             </button>
           </li>
@@ -64,14 +72,14 @@ export function Nav() {
 
         {/* Mobile: theme + hamburger */}
         <div className="nav-mobile-actions">
-          <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label="Toggle theme">
+          <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
             {theme === 'dark' ? '💡' : '🌙'}
           </button>
           <button
             type="button"
             className="nav-menu-btn"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileOpen ? t('nav.aria.closeMenu') : t('nav.aria.openMenu')}
           >
             {mobileOpen ? <CloseIcon /> : <MenuIcon />}
           </button>
@@ -87,12 +95,12 @@ export function Nav() {
           type="button"
           className="nav-overlay-close"
           onClick={closeMobile}
-          aria-label="Close menu"
+          aria-label={t('nav.aria.closeMenu')}
         >
           <CloseIcon />
         </button>
         <div className="nav-overlay-content">
-          {navItems.map((item, i) => (
+          {navKeys.map((item, i) => (
             item.isRoute ? (
               <Link
                 key={item.href}
@@ -101,7 +109,7 @@ export function Nav() {
                 onClick={closeMobile}
                 style={{ transitionDelay: `${0.1 + i * 0.06}s` }}
               >
-                {item.label}
+                {t(`nav.${item.key}`)}
               </Link>
             ) : (
               <a
@@ -112,10 +120,15 @@ export function Nav() {
                 style={{ transitionDelay: `${0.1 + i * 0.06}s` }}
                 {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
-                {item.label}
+                {t(`nav.${item.key}`)}
               </a>
             )
           ))}
+          <div className="nav-overlay-lang" style={{ transitionDelay: `${0.1 + navKeys.length * 0.06}s` }}>
+            <button type="button" className="nav-overlay-lang-btn" onClick={() => { setLocale('en' as Locale); closeMobile(); }} aria-pressed={locale === 'en'}>EN</button>
+            <span className="nav-overlay-lang-sep">/</span>
+            <button type="button" className="nav-overlay-lang-btn" onClick={() => { setLocale('zh-TW'); closeMobile(); }} aria-pressed={locale === 'zh-TW'}>繁中</button>
+          </div>
         </div>
       </div>
     </>

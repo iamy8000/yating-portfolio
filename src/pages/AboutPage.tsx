@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { GrainCanvas } from '../components/GrainCanvas'
+import { useLanguage } from '../context/LanguageContext'
 import { Nav } from '../components/Nav'
 import { Experience } from '../components/Experience'
 import { MeSection } from '../components/MeSection'
@@ -12,6 +13,7 @@ type ScrollDirection = 'up' | 'down'
 
 export function AboutPage() {
   const { hash } = useLocation()
+  const { t } = useLanguage()
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget>(null)
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>('down')
 
@@ -100,13 +102,13 @@ export function AboutPage() {
           onClick={scrollToTarget}
           aria-label={
             scrollTarget === 'experience'
-              ? 'Scroll to Work Experience'
-              : 'Scroll to Outside of Work'
+              ? t('aboutPage.scrollToExperience')
+              : t('aboutPage.scrollToOutside')
           }
         >
           <span key={`${scrollTarget}-${scrollDirection}`} className="about-scroll-hint-content">
             <span className="about-scroll-hint-text">
-              {scrollTarget === 'experience' ? 'Work experience' : 'Outside of work'}
+              {scrollTarget === 'experience' ? t('aboutPage.workExperience') : t('aboutPage.outsideOfWork')}
             </span>
             <span className="about-scroll-hint-arrow">
               {scrollDirection === 'up' ? '\u2191\uFE0E' : '\u2193\uFE0E'}

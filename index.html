@@ -10,6 +10,8 @@
       var isDark = t === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
       document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#0d1117' : '#F0EFED');
+      var lang = localStorage.getItem('portfolio-locale');
+      document.documentElement.lang = lang === 'zh-TW' ? 'zh-Hant' : 'en';
     })();
   </script>
   <title>Amy Yang — Frontend Engineer</title>
