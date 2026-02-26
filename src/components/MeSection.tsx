@@ -1,5 +1,12 @@
 import { useRef, useEffect } from 'react'
 
+const ABOUT_ME_IMAGES = [
+  '/images/about-me-1.JPG',
+  '/images/about-me-2.jpeg',
+  '/images/about-me-3.jpg',
+  '/images/about-me-4.JPG',
+]
+
 function useFadeIn(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -36,18 +43,11 @@ export function MeSection() {
           I&apos;m a front-end engineer and I love running — 63/184 cafés in NYC checked off and counting!
         </h2>
         <div ref={ref} className="me-photos fade-up">
-          <div className="me-photo-wrap">
-            <div className="me-photo-placeholder">Photo 1</div>
-          </div>
-          <div className="me-photo-wrap">
-            <div className="me-photo-placeholder">Photo 2</div>
-          </div>
-          <div className="me-photo-wrap">
-            <div className="me-photo-placeholder">Photo 3</div>
-          </div>
-          <div className="me-photo-wrap">
-            <div className="me-photo-placeholder">Photo 4</div>
-          </div>
+          {ABOUT_ME_IMAGES.map((src, i) => (
+            <div key={i} className="me-photo-wrap">
+              <img src={src} alt="" className="me-photo" />
+            </div>
+          ))}
         </div>
       </div>
       </div>

@@ -1,5 +1,14 @@
 import { useRef, useEffect } from 'react'
 
+const FILM_PICS = [
+  { src: '/images/film-pic-1.jpg', className: '' },
+  { src: '/images/film-pic-2.jpg', className: '' },
+  { src: '/images/film-pic-3.png', className: 'tall' },
+  { src: '/images/film-pic-4.png', className: 'wide' },
+  { src: '/images/film-pic-5.jpg', className: 'tall' },
+  { src: '/images/film-pic-6.jpg', className: 'wide' },
+]
+
 const outsideCards = [
   {
     emoji: '🏃‍♀️',
@@ -74,24 +83,11 @@ export function OutsideOfWork() {
       </div>
 
       <div className="about-content">
-        {/* Film Photos — reference portfolio (1).html */}
         <div ref={ref4} className="about-subsection fade-up" style={{ transitionDelay: '0.26s' }}>
-          <div className="photos-grid">
-            {[
-              { emoji: '🏔️', caption: 'Add caption here', className: 'tall' },
-              { emoji: '🌆', caption: 'Add caption here', className: '' },
-              { emoji: '🌊', caption: 'Add caption here', className: '' },
-              { emoji: '🏙️', caption: 'Add caption here', className: 'wide' },
-              { emoji: '🌸', caption: 'Add caption here', className: '' },
-              { emoji: '🍜', caption: 'Add caption here', className: '' },
-              { emoji: '🌅', caption: 'Add caption here', className: '' },
-            ].map((item, i) => (
+          <div className="photos-grid film-photos-grid">
+            {FILM_PICS.map((item, i) => (
               <div key={i} className={`photo-cell ${item.className}`.trim()}>
-                <div className="photo-placeholder">
-                  <span aria-hidden>{item.emoji}</span>
-                  your photo
-                </div>
-                <div className="photo-overlay">{item.caption}</div>
+                <img src={item.src} alt="" className="film-photo-img" />
               </div>
             ))}
           </div>
