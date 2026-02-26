@@ -1663,8 +1663,10 @@ h1.hero-title em { font-style: italic; }
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 160px;
   }
-  .photo-cell.wide {
-    grid-column: span 2;
+  .photos-grid .photo-cell.tall,
+  .photos-grid .photo-cell.wide {
+    grid-column: span 1;
+    grid-row: span 1;
   }
 }
 

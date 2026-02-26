@@ -1,4 +1,18 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia(query).matches : false
+  )
+  useEffect(() => {
+    const m = window.matchMedia(query)
+    setMatches(m.matches)
+    const handler = () => setMatches(m.matches)
+    m.addEventListener('change', handler)
+    return () => m.removeEventListener('change', handler)
+  }, [query])
+  return matches
+}
 
 const FILM_PICS: { src: string; className: string; objectPosition?: string }[] = [
   { src: '/images/film-pic-1.jpg', className: '' },
@@ -10,10 +24,16 @@ const FILM_PICS: { src: string; className: string; objectPosition?: string }[] =
   { src: '/images/film-pic-10.jpg', className: 'wide', objectPosition: 'center 68%' },
 ]
 
-const SAME_ROW_PICS = [
+const SAME_ROW_PICS: { src: string; className: string; objectPosition?: string }[] = [
   { src: '/images/film-pic-6.jpg', className: '' },
   { src: '/images/film-pic-7.jpg', className: '' },
   { src: '/images/film-pic-8.jpg', className: '' },
+]
+
+const ALL_FILM_PICS_MOBILE = [
+  ...FILM_PICS.slice(0, 5),
+  ...SAME_ROW_PICS,
+  ...FILM_PICS.slice(5, 7),
 ]
 
 const outsideCards = [
@@ -73,6 +93,7 @@ function useFadeIn(threshold = 0.12) {
 export function OutsideOfWork() {
   const ref = useFadeIn(0.12)
   const ref4 = useFadeIn(0.12)
+  const isMobile = useMediaQuery('(max-width: 768px)')
 
   return (
     <section className="section section-outside" id="outside">
@@ -91,25 +112,42 @@ export function OutsideOfWork() {
 
       <div className="about-content">
         <div ref={ref4} className="about-subsection fade-up" style={{ transitionDelay: '0.26s' }}>
-          <div className="film-pics-row">
-            {SAME_ROW_PICS.map((item, i) => (
-              <div key={i} className="photo-cell">
-                <img src={item.src} alt="" className="film-photo-img" />
+          {isMobile ? (
+            <div className="photos-grid film-photos-grid">
+              {ALL_FILM_PICS_MOBILE.map((item, i) => (
+                <div key={i} className="photo-cell">
+                  <img
+                    src={item.src}
+                    alt=""
+                    className="film-photo-img"
+                    style={item.objectPosition != null ? { objectPosition: item.objectPosition } : undefined}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <div className="film-pics-row">
+                {SAME_ROW_PICS.map((item, i) => (
+                  <div key={i} className="photo-cell">
+                    <img src={item.src} alt="" className="film-photo-img" />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="photos-grid film-photos-grid">
-            {FILM_PICS.map((item, i) => (
-              <div key={i} className={`photo-cell ${item.className}`.trim()}>
-                <img
-                  src={item.src}
-                  alt=""
-                  className="film-photo-img"
-                  style={item.objectPosition != null ? { objectPosition: item.objectPosition } : undefined}
-                />
+              <div className="photos-grid film-photos-grid">
+                {FILM_PICS.map((item, i) => (
+                  <div key={i} className={`photo-cell ${item.className}`.trim()}>
+                    <img
+                      src={item.src}
+                      alt=""
+                      className="film-photo-img"
+                      style={item.objectPosition != null ? { objectPosition: item.objectPosition } : undefined}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          )}
         </div>
       </div>
       </div>
