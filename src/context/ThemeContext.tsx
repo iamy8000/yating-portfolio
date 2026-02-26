@@ -2,6 +2,15 @@ import { createContext, useContext, useState, useCallback, type ReactNode } from
 
 export type Theme = 'dark' | 'light'
 
+const THEME_STORAGE_KEY = 'portfolio-theme'
+
+function getStoredTheme(): Theme {
+  if (typeof window === 'undefined') return 'light'
+  const stored = localStorage.getItem(THEME_STORAGE_KEY)
+  if (stored === 'dark' || stored === 'light') return stored
+  return 'light'
+}
+
 type ThemeContextValue = {
   theme: Theme
   toggleTheme: () => void
@@ -10,10 +19,14 @@ type ThemeContextValue = {
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light')
+  const [theme, setTheme] = useState<Theme>(getStoredTheme)
 
   const toggleTheme = useCallback(() => {
-    setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
+    setTheme((t) => {
+      const next = t === 'dark' ? 'light' : 'dark'
+      localStorage.setItem(THEME_STORAGE_KEY, next)
+      return next
+    })
   }, [])
 
   return (

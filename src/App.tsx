@@ -11,10 +11,14 @@ import { Footer } from './components/Footer'
 import { ProjectDetail } from './pages/ProjectDetail'
 import { AboutPage } from './pages/AboutPage'
 
+const THEME_COLORS = { dark: '#0d1117', light: '#F0EFED' } as const
+
 function ThemeSync({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme()
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    const meta = document.querySelector('meta[name="theme-color"]')
+    if (meta) meta.setAttribute('content', THEME_COLORS[theme])
   }, [theme])
   return <>{children}</>
 }
