@@ -70,8 +70,16 @@ export function Nav() {
           </li>
         </ul>
 
-        {/* Mobile: theme + hamburger */}
+        {/* Mobile: 圓框語言鈕（顯示另一個語言）+ theme + hamburger */}
         <div className="nav-mobile-actions">
+          <button
+            type="button"
+            className="nav-lang-circle-btn"
+            onClick={() => setLocale(locale === 'en' ? 'zh-TW' : ('en' as Locale))}
+            aria-label={locale === 'en' ? 'Switch to 繁中' : 'Switch to EN'}
+          >
+            {locale === 'en' ? '繁中' : 'EN'}
+          </button>
           <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
             {theme === 'dark' ? '💡' : '🌙'}
           </button>
