@@ -27,7 +27,11 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  transition: background 0.7s;
+}
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -63,6 +67,8 @@ nav.nav-bar {
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 3rem;
+  padding-top: max(1.4rem, env(safe-area-inset-top));
+  background: var(--bg);
   transition: background 0.7s, color 0.7s;
 }
 
@@ -161,6 +167,7 @@ nav.nav-bar {
 @media (max-width: 768px) {
   nav.nav-bar {
     padding: 1rem 1.25rem;
+    padding-top: max(1rem, env(safe-area-inset-top));
   }
 
   .nav-links { display: none; }
