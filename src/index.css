@@ -29,8 +29,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
-  background: var(--bg);
-  transition: background 0.7s;
+  /* background: var(--bg); */
+  /* transition: background 0.7s; */
 }
 
 body {
@@ -67,7 +67,7 @@ nav.nav-bar {
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 3rem;
-  padding-top: max(1.4rem, env(safe-area-inset-top));
+  /* padding-top: max(1.4rem, env(safe-area-inset-top)); */
   /* background: var(--bg); */
   transition: background 0.7s, color 0.7s;
 }
@@ -167,7 +167,7 @@ nav.nav-bar {
 @media (max-width: 768px) {
   nav.nav-bar {
     padding: 1rem 1.25rem;
-    padding-top: max(1rem, env(safe-area-inset-top));
+    /* padding-top: max(1rem, env(safe-area-inset-top)); */
   }
 
   .nav-links { display: none; }
@@ -1206,6 +1206,10 @@ h1.hero-title em { font-style: italic; }
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+}
+
+.page-main {
+  min-height: 100vh;
 }
 
 #outside .about-content {
