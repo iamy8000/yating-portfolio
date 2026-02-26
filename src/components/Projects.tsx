@@ -32,11 +32,7 @@ function useFadeIn(threshold = 0.12) {
 export function Projects() {
   const { t, tr } = useLanguage()
   return (
-    <section className="section section-projects" id="projects">
-      <div className="projects-blob-wrap">
-        {/* <div className="projects-blob projects-blob-1" aria-hidden /> */}
-        {/* <div className="projects-blob projects-blob-2" aria-hidden /> */}
-      </div>
+    <section className="section section-projects" id="projects">     
       <div className="projects-bg-word" aria-hidden>
         {t('projects.sectionLabel')}
       </div>

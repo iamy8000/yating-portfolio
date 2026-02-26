@@ -709,6 +709,7 @@ h1.hero-title em { font-style: italic; }
 .section-me {
   position: relative;
   overflow: hidden;
+  padding-top: 8rem; 
 }
 
 .me-inner {
@@ -745,7 +746,7 @@ h1.hero-title em { font-style: italic; }
   }
 
   #me.section {
-    padding-top: 5rem;
+    padding-top: 7rem;
   }
 
   #projects .section-label,
@@ -779,56 +780,9 @@ h1.hero-title em { font-style: italic; }
   margin-right: auto;
 }
 
-.projects-blob-wrap {
-  position: absolute;
-  left: 50%;
-  margin-left: -50vw;
-  width: 100vw;
-  top: 0;
-  bottom: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.projects-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  will-change: transform;
-}
-
-.projects-blob-1 {
-  width: 200px;
-  height: 200px;
-  /* top: 5%; */
-  left: 10%;
-  transform: translateX(-50%);
-  background: var(--blob2);
-  opacity: 0.5;
-  animation: drift-b 22s ease-in-out infinite;
-}
-
-.projects-blob-2 {
-  width: 260px;
-  height: 260px;
-  bottom: -10%;
-  left: -5%;
-  background: var(--blob4);
-  opacity: 0.45;
-  animation: drift-a 19s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .projects-blob-1,
-  .projects-blob-2 {
-    animation: none;
-  }
-}
-
 .projects-bg-word {
   position: absolute;
-  top: 10px;
+  top: 30px;
   left: 5%;
   z-index: 0;
   font-family: 'Instrument Serif', serif;
@@ -1114,14 +1068,15 @@ h1.hero-title em { font-style: italic; }
 }
 
 /* ── ABOUT ── */
-.section-about {
+.section-about,
+.section-projects {
   position: relative;
   overflow: hidden;
 }
 
 .about-bg-word {
   position: absolute;
-  top: 20px;
+  top: 35px;
   left: 10px;
   z-index: 0;
   font-family: 'Instrument Serif', serif;
@@ -1138,12 +1093,19 @@ h1.hero-title em { font-style: italic; }
   mix-blend-mode: soft-light;
 }
 
+#me.section .about-bg-word {
+  top: 70px;
+}
+
 @media (max-width: 768px) {
   .about-bg-word {
     top: 10px;
   }
   #me.section .about-bg-word {
-    top: 45px;
+    top: 80px;
+  }
+  .section-header-wrap .about-bg-word {
+    top: auto;
   }
 }
 
@@ -1209,6 +1171,9 @@ h1.hero-title em { font-style: italic; }
 }
 
 .page-main {
+  /* position: relative;
+  top: 0;
+  z-index: 1; */
   min-height: 100vh;
 }
 

@@ -35,7 +35,7 @@ export function MeSection() {
   const ref = useFadeIn(0.12)
 
   return (
-    <section className="section section-me" id="me" style={{ marginTop: '2rem' }}>
+    <section className="section section-me" id="me">
       <div className="about-bg-word" aria-hidden>{t('me.label')}</div>
       <div className="me-inner">
         <p className="section-label">{t('me.label')}</p>
