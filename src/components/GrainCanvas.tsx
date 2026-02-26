@@ -18,13 +18,14 @@ export function GrainCanvas() {
       c.height = h
       const imageData = ctx.createImageData(w, h)
       const data = imageData.data
-      const alphaRange = isMobileOrTablet() ? 10 : 90
+      const alphaRange = isMobileOrTablet() ? 8 : 50
+      const alphaBase = isMobileOrTablet() ? 20 : 22
       for (let i = 0; i < data.length; i += 4) {
         const val = Math.random() * 255
         data[i] = val
         data[i + 1] = val
         data[i + 2] = val
-        data[i + 3] = Math.random() * alphaRange + 35
+        data[i + 3] = Math.random() * alphaRange + alphaBase
       }
       ctx.putImageData(imageData, 0, 0)
     }

@@ -1491,6 +1491,13 @@ h1.hero-title em { font-style: italic; }
   display: block;
 }
 
+/* 有照片的區塊顯示在 grain canvas 之上 */
+.me-photos,
+.film-photos-grid {
+  position: relative;
+  z-index: 10002;
+}
+
 .photo-placeholder {
   width: 100%;
   height: 100%;
