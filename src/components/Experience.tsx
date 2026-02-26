@@ -118,7 +118,7 @@ export function Experience() {
         </div>
         <p className="experience-resume-wrap">
           <a
-            href="/Resume_Yating_Amy_Yang.pdf"
+            href="https://drive.google.com/file/d/15kAqEEE7kAjZWnxhAWhMQeB1yyEK-lDV/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="experience-resume-link"

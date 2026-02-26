@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer>
+    <footer id="footer">
       <div className="footer-logo">Amy Yang</div>
       <div>© 2026 · All rights reserved.</div>
       <div style={{ display: 'flex', gap: '1.5rem' }}>

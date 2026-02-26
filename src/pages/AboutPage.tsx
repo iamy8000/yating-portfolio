@@ -7,12 +7,13 @@ import { MeSection } from '../components/MeSection'
 import { OutsideOfWork } from '../components/OutsideOfWork'
 import { Footer } from '../components/Footer'
 
-type NextSection = 'experience' | 'outside' | null
+type ScrollTarget = 'experience' | 'outside' | null
+type ScrollDirection = 'up' | 'down'
 
 export function AboutPage() {
   const { hash } = useLocation()
-  const [nextSection, setNextSection] = useState<NextSection>(null)
-  const [fadingOut, setFadingOut] = useState(false)
+  const [scrollTarget, setScrollTarget] = useState<ScrollTarget>(null)
+  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>('down')
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -33,22 +34,26 @@ export function AboutPage() {
     const me = document.getElementById('me')
     const experience = document.getElementById('experience')
     const outside = document.getElementById('outside')
-    if (!me || !experience || !outside) return
+    const footer = document.getElementById('footer')
+    if (!me || !experience || !outside || !footer) return
 
-    const ratios: Record<string, number> = { me: 0, experience: 0, outside: 0 }
+    const ratios: Record<string, number> = { me: 0, experience: 0, outside: 0, footer: 0 }
     const updateNext = () => {
-      if (ratios.me >= ratios.experience && ratios.me >= ratios.outside && ratios.me > 0.1) {
-        setNextSection('experience')
-        setFadingOut(false)
+      if (ratios.footer >= ratios.me && ratios.footer >= ratios.experience && ratios.footer >= ratios.outside && ratios.footer > 0.1) {
+        setScrollTarget('outside')
+        setScrollDirection('up')
+      } else if (ratios.me >= ratios.experience && ratios.me >= ratios.outside && ratios.me > 0.1) {
+        setScrollTarget('experience')
+        setScrollDirection('down')
       } else if (ratios.experience >= ratios.me && ratios.experience >= ratios.outside && ratios.experience > 0.1) {
-        setNextSection('outside')
-        setFadingOut(false)
+        setScrollTarget('outside')
+        setScrollDirection('down')
       } else if (ratios.outside > 0.1) {
-        setNextSection('outside')
-        setFadingOut(true)
+        setScrollTarget('experience')
+        setScrollDirection('up')
       } else {
-        setNextSection('experience')
-        setFadingOut(false)
+        setScrollTarget('experience')
+        setScrollDirection('down')
       }
     }
     const observer = new IntersectionObserver(
@@ -64,22 +69,14 @@ export function AboutPage() {
     observer.observe(me)
     observer.observe(experience)
     observer.observe(outside)
+    observer.observe(footer)
     return () => observer.disconnect()
   }, [])
 
-  useEffect(() => {
-    if (!fadingOut) return
-    const t = setTimeout(() => {
-      setNextSection(null)
-      setFadingOut(false)
-    }, 400)
-    return () => clearTimeout(t)
-  }, [fadingOut])
-
-  const scrollToNext = () => {
-    if (nextSection === 'experience') {
+  const scrollToTarget = () => {
+    if (scrollTarget === 'experience') {
       document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    } else if (nextSection === 'outside') {
+    } else if (scrollTarget === 'outside') {
       document.getElementById('outside')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
@@ -96,18 +93,25 @@ export function AboutPage() {
         <OutsideOfWork />
       </main>
       <Footer />
-      {(nextSection || fadingOut) && (
+      {scrollTarget && (
         <button
           type="button"
-          className={`about-scroll-hint${fadingOut ? ' about-scroll-hint--fade-out' : ''}`}
-          onClick={scrollToNext}
-          aria-label={nextSection === 'experience' ? 'Scroll to Work Experience' : 'Scroll to Outside of Work'}
-          style={fadingOut ? { pointerEvents: 'none' } : undefined}
+          className="about-scroll-hint"
+          onClick={scrollToTarget}
+          aria-label={
+            scrollTarget === 'experience'
+              ? 'Scroll to Work Experience'
+              : 'Scroll to Outside of Work'
+          }
         >
-          <span className="about-scroll-hint-text">
-            {nextSection === 'experience' ? 'Work experience' : 'Outside of work'}
+          <span key={`${scrollTarget}-${scrollDirection}`} className="about-scroll-hint-content">
+            <span className="about-scroll-hint-text">
+              {scrollTarget === 'experience' ? 'Work experience' : 'Outside of work'}
+            </span>
+            <span className="about-scroll-hint-arrow">
+              {scrollDirection === 'up' ? '\u2191\uFE0E' : '\u2193\uFE0E'}
+            </span>
           </span>
-          <span className="about-scroll-hint-arrow">{'\u2193\uFE0E'}</span>
         </button>
       )}
     </>
