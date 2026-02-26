@@ -123,7 +123,7 @@ export function Experience() {
             rel="noopener noreferrer"
             className="experience-resume-link"
           >
-            View Full Resume ↗
+            View Full Resume {'\u2197\uFE0E'}
           </a>
         </p>
       </div>
@@ -146,7 +146,7 @@ function ExperienceRow({ exp, delay }: { exp: ExperienceItem; delay: number }) {
           {exp.title} @ {exp.company}
           {exp.link && (
             <a href={exp.link} target="_blank" rel="noreferrer" className="experience-ext-link" aria-label="Company link">
-              ↗
+              {'\u2197\uFE0E'}
             </a>
           )}
         </h3>

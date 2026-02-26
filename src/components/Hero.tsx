@@ -82,11 +82,11 @@ export function Hero() {
         </p>
         <div className="hero-cta-wrap">
           <a href="/about" className="view-btn">
-            <div className="view-btn-circle">↗</div>
+            <div className="view-btn-circle">{'\u2197\uFE0E'}</div>
             {`Learn more about me :)`}
           </a>
           <a href="#projects" className="view-btn">
-            <div className="view-btn-circle">↗</div>
+            <div className="view-btn-circle">{'\u2197\uFE0E'}</div>
             View Projects
           </a>
         </div>

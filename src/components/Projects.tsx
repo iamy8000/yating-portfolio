@@ -96,7 +96,7 @@ function ProjectCard({
         <div className="project-title">{title}</div>
         <div className="project-sub">{sub}</div>
       </div>
-      <div className="project-arrow">↗</div>
+      <div className="project-arrow">{'\u2197\uFE0E'}</div>
     </Link>
   )
 }

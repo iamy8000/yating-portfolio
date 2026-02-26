@@ -107,7 +107,7 @@ export function AboutPage() {
           <span className="about-scroll-hint-text">
             {nextSection === 'experience' ? 'Work experience' : 'Outside of work'}
           </span>
-          <span className="about-scroll-hint-arrow">↓</span>
+          <span className="about-scroll-hint-arrow">{'\u2193\uFE0E'}</span>
         </button>
       )}
     </>

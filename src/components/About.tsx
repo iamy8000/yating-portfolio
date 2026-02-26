@@ -43,7 +43,7 @@ export function About() {
               </div>
             </div>
             <p style={{ marginTop: '1.5rem' }}>
-              <a href="/about" className="about-teaser-link">{`Learn more about me :)`} →</a>
+              <a href="/about" className="about-teaser-link">{`Learn more about me :)`} {'\u2192\uFE0E'}</a>
             </p>
           </div>
           <div ref={ref1} className="about-body fade-up" style={{ transitionDelay: '0.1s' }}>
@@ -51,9 +51,9 @@ export function About() {
             <p>Before transitioning into engineering, I earned a Bachelor&apos;s in Advertising and worked 2 years at Ogilvy on campaigns for Nike and Google Play. Working closely with designers, strategists, and engineers taught me how to think about products not just as features, but as experiences.</p>
             <p>My advertising background influences how I approach engineering today — user emotion, clarity, and narrative, not just implementation. To me, frontend development isn&apos;t only about making things work; it&apos;s about making them feel <em>intuitive</em> and purposeful.</p>
             <p>
-              <a href="https://www.linkedin.com/in/yang-ya-ting/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+              <a href="https://www.linkedin.com/in/yang-ya-ting/" target="_blank" rel="noreferrer">LinkedIn {'\u2197\uFE0E'}</a>
               {' \u2003 '}
-              <a href="mailto:yating.yy.yang@gmail.com">yating.yy.yang@gmail.com ↗</a>
+              <a href="mailto:yating.yy.yang@gmail.com">yating.yy.yang@gmail.com {'\u2197\uFE0E'}</a>
             </p>
           </div>
         </div>

@@ -116,16 +116,6 @@ export function Nav() {
               </a>
             )
           ))}
-          <a
-            href="/Resume_Yating_Amy_Yang.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-overlay-resume"
-            onClick={closeMobile}
-            style={{ transitionDelay: `${0.1 + navItems.length * 0.06}s` }}
-          >
-            Resume ↗
-          </a>
         </div>
       </div>
     </>
