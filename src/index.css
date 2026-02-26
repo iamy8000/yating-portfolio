@@ -483,6 +483,44 @@ h1.hero-title em { font-style: italic; }
   transition: border-color 0.7s;
 }
 
+/* About page: floating scroll hint */
+.about-scroll-hint {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: rgba(13, 17, 23, 0.88);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: opacity 0.4s ease, background 0.3s, border-color 0.3s, color 0.3s, transform 0.2s;
+}
+[data-theme="light"] .about-scroll-hint {
+  background: rgba(240, 239, 237, 0.88);
+}
+.about-scroll-hint:hover {
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+.about-scroll-hint--fade-out {
+  opacity: 0;
+}
+.about-scroll-hint-text {
+  opacity: 0.9;
+}
+.about-scroll-hint-arrow {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
 /* ── PROJECTS ── */
 .section { padding: 6rem 3rem; }
 
@@ -528,7 +566,8 @@ h1.hero-title em { font-style: italic; }
 @media (max-width: 768px) {
   #projects.section,
   #about.section,
-  #outside.section {
+  #outside.section,
+  #experience.section {
     padding-top: 2.5rem;
   }
 
@@ -539,7 +578,8 @@ h1.hero-title em { font-style: italic; }
   #projects .section-label,
   #about .section-label,
   #outside .section-label,
-  #me .section-label {
+  #me .section-label,
+  #experience .section-label {
     margin-bottom: 2rem;
   }
 }
@@ -1147,6 +1187,22 @@ h1.hero-title em { font-style: italic; }
 /* Me section (3 photos) */
 .me-content {
   display: block;
+}
+
+.me-heading-diary {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  /* max-width: 42rem; */
+  transition: color 0.7s;
+}
+.me-heading-diary p {
+  margin-bottom: 1.25rem;
+}
+.me-heading-diary p:last-child {
+  margin-bottom: 0;
 }
 
 .me-intro {

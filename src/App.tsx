@@ -42,7 +42,7 @@ function HomePage() {
       <hr className="rule" />
       <Projects />
       <hr className="rule" />
-      <About teaser />
+      <About />
       <hr className="rule" />
       <Contact />
       <Footer />

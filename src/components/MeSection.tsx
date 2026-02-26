@@ -38,10 +38,11 @@ export function MeSection() {
       <div className="me-inner">
         <p className="section-label">About Me</p>
         <div className="me-content">
-        <h2 className="about-heading">
-          Born and raised in Taiwan. Three years in DC and Maryland, now based in NYC.
-          I&apos;m a front-end engineer and I love running — 63/184 cafés in NYC checked off and counting!
-        </h2>
+        <div className="about-heading me-heading-diary">
+          <p>I grew up in Taiwan, moved to DC and Maryland for grad school and work, and now I&apos;m in NYC — still adjusting, still learning, still building. Before engineering I did advertising at Ogilvy, working on campaigns for Nike and Google Play alongside designers, strategists, and engineers. That taught me to think about products as experiences, not just features.</p>
+          <p>Outside of code I run. Central Park is the place that makes the city feel less overwhelming. I also keep a café list and a lot of small goals; to me the world is one big bucket list — I don&apos;t need to finish it, I just like having things to look forward to.</p>
+          <p>What I carry from all of that into frontend: curiosity and care. I care a lot about clarity and how small details shape how people experience something. To me, good frontend isn&apos;t only about making things work — it&apos;s about making them feel intuitive and purposeful.</p>
+        </div>
         <div ref={ref} className="me-photos fade-up">
           {ABOUT_ME_IMAGES.map((src, i) => (
             <div key={i} className="me-photo-wrap">
