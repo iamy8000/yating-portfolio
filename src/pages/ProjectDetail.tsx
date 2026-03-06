@@ -134,7 +134,7 @@ export function ProjectDetail() {
           <div ref={ref5} className="project-detail-block fade-up" style={{ transitionDelay: '0.25s' }}>
             <h2 className="project-detail-heading">{t('projects.demoMockups')}</h2>
             <div className="project-detail-mockup">
-              {project.demoVideos?.length > 0 && (
+              {project.demoVideos && project.demoVideos.length > 0 && (
                 <div className="project-detail-demo-videos">
                   {project.demoVideos.map((url, i) => {
                     const videoId = getYoutubeEmbedId(url)

@@ -10,12 +10,16 @@
       var isDark = t === 'dark';
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
       document.querySelector('meta[name="theme-color"]').setAttribute('content', isDark ? '#0d1117' : '#F0EFED');
+      var lang = localStorage.getItem('portfolio-locale');
+      document.documentElement.lang = lang === 'zh-TW' ? 'zh-Hant' : 'en';
     })();
   </script>
   <title>Amy Yang — Frontend Engineer</title>
+  <link rel="icon" href="/images/yy-profile-pic.jpeg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="/images/yy-profile-pic.jpeg" />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="/assets/index-DuzlcLqG.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BT_oMHHn.css">
+  <script type="module" crossorigin src="/assets/index-CnjWLCTs.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BNU2cacQ.css">
 </head>
 <body>
   <div id="root"></div>
