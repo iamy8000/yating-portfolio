@@ -63,6 +63,7 @@ export const translations = {
       organization: 'Organization',
       details: 'Details',
       techStack: 'Tech Stack',
+      viewOnGithub: 'View on GitHub',
       demoMockups: 'Demo & Mockups',
       screenshotsComing: 'Screenshots / demo coming soon',
       list: {
@@ -138,6 +139,7 @@ export const translations = {
       viewResume: 'View Full Resume',
       aria: { companyLink: 'Company link' },
       items: [
+        { period: 'Feb 2026 – Present', title: 'Founding Engineer', company: 'ConnNext', description: 'Lead frontend for the ConnNext mobile app (React Native / Expo) in a 4-engineer startup — scalable UI system, auth/onboarding, and real-time flows from early-stage to production.', tags: ['React Native', 'Expo', 'TypeScript', 'Clerk', 'JavaScript'] },
         { period: 'Aug 2024 – Jul 2025', title: 'Frontend Engineer', company: 'Tymeline', description: 'Built core UI components for an AI-powered performance platform.', tags: ['React', 'JavaScript', 'Redux', 'TypeScript', 'Playwright', 'AWS'] },
         { period: 'Jul 2024 – Jul 2025', title: 'Software Engineer', company: 'IpserLab', description: 'Worked on a WebRTC video conferencing platform, leading UI revamps and improving accessibility, interaction, and UX.', tags: ['React', 'JavaScript', 'WebRTC'] },
         { period: 'Sep 2023 – May 2024', title: 'Teaching Assistant, Python Programming', company: 'University of Maryland', description: 'Supported course instructors by leading Python lab sessions and providing technical assistance for student projects.', tags: ['Python'] },
@@ -213,6 +215,7 @@ export const translations = {
       organization: '所屬單位',
       details: '詳細說明',
       techStack: '技術棧',
+      viewOnGithub: '在 GitHub 查看',
       demoMockups: '展示與 Mockup',
       screenshotsComing: '截圖 / 展示即將上線',
       list: {
@@ -288,6 +291,7 @@ export const translations = {
       viewResume: '查看完整履歷',
       aria: { companyLink: '公司連結' },
       items: [
+        { period: '2026年2月 – 至今', title: '創始工程師', company: 'ConnNext', description: '在 4 人新創團隊中主導 ConnNext 行動 app（React Native / Expo）前端，從早期到上線：可擴充 UI 系統、登入/onboarding 與即時連線流程。', tags: ['React Native', 'Expo', 'TypeScript', 'Clerk', 'JavaScript'] },
         { period: '2024年8月 – 2025年7月', title: '前端工程師', company: 'Tymeline', description: '為 AI 效能平台建置核心 UI 元件。', tags: ['React', 'JavaScript', 'Redux', 'TypeScript', 'Playwright', 'AWS'] },
         { period: '2024年7月 – 2025年7月', title: '軟體工程師', company: 'IpserLab', description: '參與 WebRTC 視訊會議平台，主導 UI 改版並提升無障礙、互動與 UX。', tags: ['React', 'JavaScript', 'WebRTC'] },
         { period: '2023年9月 – 2024年5月', title: 'Python 程式助教', company: '馬里蘭大學', description: '帶領 Python 實驗課並協助學生專案。', tags: ['Python'] },

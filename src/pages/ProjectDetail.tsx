@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
-import { GrainCanvas } from '../components/GrainCanvas'
 import { useLanguage } from '../context/LanguageContext'
 
 function useFadeIn(threshold = 0.12) {
@@ -36,6 +35,21 @@ function ArrowLeftIcon() {
   )
 }
 
+function getYoutubeEmbedId(url: string): string | null {
+  try {
+    const u = new URL(url)
+    if (u.hostname === 'www.youtube.com' || u.hostname === 'youtube.com') {
+      if (u.pathname.startsWith('/embed/')) return u.pathname.split('/').pop() || null
+      if (u.pathname.startsWith('/shorts/')) return u.pathname.split('/').pop() || null
+      return u.searchParams.get('v')
+    }
+    if (u.hostname === 'youtu.be') return u.pathname.slice(1).replace(/^\//, '') || null
+  } catch {
+    return null
+  }
+  return null
+}
+
 export function ProjectDetail() {
   const { projectId } = useParams<{ projectId: string }>()
   const { t, tr } = useLanguage()
@@ -54,7 +68,6 @@ export function ProjectDetail() {
   if (!project) {
     return (
       <>
-        <GrainCanvas />
         <Nav />
         <div className="project-detail-page">
           <div className="project-detail-inner">
@@ -71,7 +84,6 @@ export function ProjectDetail() {
 
   return (
     <>
-      <GrainCanvas />
       <Nav />
       <div className="project-detail-page">
         <div className="project-detail-inner">
@@ -96,6 +108,13 @@ export function ProjectDetail() {
               <p className="project-detail-meta-label">{t('projects.organization')}</p>
               <p className="project-detail-meta-value">{localized?.teamOrg ?? project.teamOrg}</p>
             </div>
+            {project.githubUrl && (
+              <div className="project-detail-meta-item project-detail-github-wrap">
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-detail-github-link">
+                  {t('projects.viewOnGithub')} {'\u2197\uFE0E'}
+                </a>
+              </div>
+            )}
           </div>
 
           <div ref={ref3} className="project-detail-block fade-up" style={{ transitionDelay: '0.15s' }}>
@@ -115,7 +134,35 @@ export function ProjectDetail() {
           <div ref={ref5} className="project-detail-block fade-up" style={{ transitionDelay: '0.25s' }}>
             <h2 className="project-detail-heading">{t('projects.demoMockups')}</h2>
             <div className="project-detail-mockup">
-              <span className="project-detail-mockup-text">{t('projects.screenshotsComing')}</span>
+              {project.demoVideos?.length > 0 && (
+                <div className="project-detail-demo-videos">
+                  {project.demoVideos.map((url, i) => {
+                    const videoId = getYoutubeEmbedId(url)
+                    if (!videoId) return null
+                    return (
+                      <div key={i} className="project-detail-demo-video-wrap">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${videoId}`}
+                          title=""
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="project-detail-demo-video"
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
+              )}
+              {project.demoImages?.length > 0 && (
+                <div className="project-detail-demo-images">
+                  {project.demoImages.map((src, i) => (
+                    <img key={i} src={src} alt="" className="project-detail-demo-img" />
+                  ))}
+                </div>
+              )}
+              {(!project.demoVideos?.length && !project.demoImages?.length) && (
+                <span className="project-detail-mockup-text">{t('projects.screenshotsComing')}</span>
+              )}
             </div>
           </div>
         </div>

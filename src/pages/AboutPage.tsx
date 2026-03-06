@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { GrainCanvas } from '../components/GrainCanvas'
 import { useLanguage } from '../context/LanguageContext'
 import { Nav } from '../components/Nav'
 import { Experience } from '../components/Experience'
@@ -85,7 +84,6 @@ export function AboutPage() {
 
   return (
     <>
-      <GrainCanvas />
       <Nav />
       <main className="page-main">
         <MeSection />
