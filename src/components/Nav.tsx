@@ -4,7 +4,7 @@ import { useTheme } from '../context/ThemeContext'
 import { useLanguage } from '../context/LanguageContext'
 import type { Locale } from '../i18n/translations'
 
-const RESUME_URL = 'https://drive.google.com/file/d/15kAqEEE7kAjZWnxhAWhMQeB1yyEK-lDV/view?usp=sharing'
+const RESUME_URL = 'https://drive.google.com/file/d/1Nk4w9CPRc5VI38YxVyBuAZXBgTlk8OP8/view?usp=drive_link'
 
 const navKeys = [
   { key: 'home' as const, href: '/', isRoute: true },
