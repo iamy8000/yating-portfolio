@@ -129,9 +129,10 @@ export const translations = {
     },
     me: {
       label: 'About Me',
-      p1: "I grew up in Taiwan, moved to DC and Maryland for grad school and work, and now I'm in NYC. Still adjusting, still learning, still building. Before engineering I did advertising at Ogilvy, working on campaigns for Nike and Google Play alongside designers, strategists, and engineers. That taught me to think about products as experiences, not just features.",
-      p2: "Outside of work, I started running after moving to New York. I run along the waterfront, through Manhattan, across bridges, and in Central Park. The one place that makes the city feel less overwhelming. I keep a lot of lists and small goals. To me, the world feels like one big bucket list. There’s always something worth doing, tasting, seeing, or trying. I like having things to look forward to.",
-      p3: "What I carry from all of that into frontend: curiosity and care. I care a lot about clarity and how small details shape how people experience something. To me, good frontend isn't only about making things work. It's about making them feel intuitive and purposeful ✨.",
+      p1: "I'm a frontend engineer based in New York, with 4+ years of experience building web and mobile applications. I graduated with a Master's in Information Management from the University of Maryland, College Park, and primarily work with React, React Native, TypeScript, and modern frontend systems. My work spans AI-powered dashboards, real-time WebRTC platforms, Web3 products, and tools used by real users at scale.",
+      p2: "I grew up in Taiwan, moved to DC and Maryland for grad school and work, and now I'm in NYC. Still adjusting, still learning, still building. Before engineering, I worked in advertising at Ogilvy on campaigns for Nike and Google Play, collaborating closely with designers, strategists, and engineers. That experience shaped how I see products. Not just as features, but as experiences.",
+      p3: "Outside of work, I started running after moving to New York. I run along the waterfront, through Manhattan, across bridges, and in Central Park. The one place that makes the city feel a little less overwhelming. I keep a lot of lists and small goals. To me, the world feels like one big bucket list. There's always something worth doing, tasting, seeing, or trying. I like having things to look forward to.",
+      p4: "What I carry from all of that into frontend is curiosity and care. I care deeply about clarity, and how small details shape how people experience something. To me, frontend development isn't just about making things work — it's about making them feel intuitive and purposeful ✨",
     },
     experience: {
       label: 'Work Experience',
@@ -281,9 +282,10 @@ export const translations = {
     },
     me: {
       label: '關於我',
-      p1: '我在台灣長大，研究所與工作期間搬到 DC 和馬里蘭，現在落腳紐約。還在適應、還在學習、也還在持續打造新的東西。在成為工程師之前，我在 Ogilvy 做廣告，與創意、策略和工程師一起參與 Nike 和 Google Play 的品牌專案。那段經驗讓我學會把產品視為一種「體驗」，而不只是功能的集合。',
-      p2: '工作之外，我搬來紐約後開始跑步。我跑河堤、跑曼哈頓、跑橋也跑中央公園，中央公園是讓這座城市沒那麼 overwhelming 的地方。我有很多清單，也有很多小目標；對我來說，世界就像一個很大的 bucket list。有太多事情值得去做、去吃、去看、去嘗試。我喜歡讓生活裡總是有一些期待。',
-      p3: '我把這些經驗都帶進前端開發裡：好奇心，還有對細節的敏銳。我很在乎清晰度，也在乎那些看似微小的細節如何影響使用者的感受。對我而言，好的前端不只是讓產品能運作，而是讓它自然、直覺、有方向✨。',
+      p1: '我是現居紐約的前端工程師，擁有 4 年以上網頁與行動應用開發經驗。畢業於馬里蘭大學學院公園分校資訊管理碩士，主要使用 React、React Native、TypeScript 與現代前端架構。工作範圍涵蓋 AI 驅動的儀表板、即時 WebRTC 平台、Web3 產品，以及實際被大量使用者採用的工具。',
+      p2: '我在台灣長大，研究所與工作期間搬到 DC 與馬里蘭，現在在紐約。還在適應、還在學習、也還在持續打造。在成為工程師之前，我在奧美廣告參與 Nike 與 Google Play 的 campaign，與設計師、策略與工程師密切合作。那段經驗形塑了我看待產品的方式：不只是功能，更是體驗。',
+      p3: '工作之外，我搬來紐約後開始跑步。我跑河堤、曼哈頓、橋梁與中央公園——那是讓這座城市感覺沒那麼壓迫的地方。我有很多清單與小目標；對我而言，世界就像一張很大的 bucket list。永遠有值得去做、去嚐、去看、去試的事。我喜歡生活裡總有值得期待的事。',
+      p4: '這些經驗帶進前端的是好奇心與在意。我很在乎清晰度，以及微小細節如何影響人們如何感受一件事。對我而言，前端開發不只是讓東西能運作——而是讓它感覺直覺、有意義✨',
     },
     experience: {
       label: '工作經驗',

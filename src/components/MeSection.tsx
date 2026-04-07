@@ -44,6 +44,7 @@ export function MeSection() {
           <p>{t('me.p1')}</p>
           <p>{t('me.p2')}</p>
           <p>{t('me.p3')}</p>
+          <p>{t('me.p4')}</p>
         </div>
         <div ref={ref} className="me-photos fade-up">
           {ABOUT_ME_IMAGES.map((src, i) => (
