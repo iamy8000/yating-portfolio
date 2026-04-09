@@ -51,7 +51,7 @@ export const translations = {
       p2: "Before transitioning into engineering, I earned a Bachelor's in Advertising and worked 2 years at Ogilvy on campaigns for Nike and Google Play. Working closely with designers, strategists, and engineers taught me how to think about products not just as features, but as experiences.",
       p3: "My advertising background influences how I approach engineering today — user emotion, clarity, and narrative, not just implementation. To me, frontend development isn't only about making things work; it's about making them feel intuitive and purposeful.",
       linkedin: 'LinkedIn',
-      email: 'yating.yy.yang@gmail.com',
+      email: 'yang.yy.yating@gmail.com',
     },
     projects: {
       sectionLabel: 'Selected Projects',
@@ -114,7 +114,7 @@ export const translations = {
     contact: {
       heading: 'Want to work',
       headingEm: 'together?',
-      email: 'yating.yy.yang@gmail.com',
+      email: 'yang.yy.yating@gmail.com',
     },
     footer: {
       rights: '© 2026 · All rights reserved.',
@@ -204,7 +204,7 @@ export const translations = {
       p2: '在轉職成工程師之前，我在輔仁大學取得廣告學學士學位，並於 Ogilvy 工作兩年，參與 Nike 與 Google Play 的品牌專案。與設計師、策略規劃與工程師密切合作的過程，讓我學會從「體驗」的角度思考產品，而不只是功能本身。',
       p3: '廣告背景深深影響了我現在做工程的方式。我在意使用者的情緒、產品的清晰度與整體敘事，而不只是把功能實作出來。對我而言，前端開發不只是讓產品運作，而是讓它自然、直覺、有意義。',
       linkedin: 'LinkedIn',
-      email: 'yating.yy.yang@gmail.com',
+      email: 'yang.yy.yating@gmail.com',
     },
     projects: {
       sectionLabel: '精選專案',
@@ -267,7 +267,7 @@ export const translations = {
     contact: {
       heading: '來 Say Hi!',
       headingEm: '',
-      email: 'yating.yy.yang@gmail.com',
+      email: 'yang.yy.yating@gmail.com',
     },
     footer: {
       rights: '© 2026 · 保留所有權利。',

@@ -35,7 +35,7 @@ export function Contact() {
       </div>
       <div ref={ref} className="contact-content fade-up">
         <h2>{t('contact.heading')}<br /><em>{t('contact.headingEm')}</em></h2>
-        <a href="mailto:yating.yy.yang@gmail.com" className="email-link">{t('contact.email')}</a>
+        <a href="mailto:yang.yy.yating@gmail.com" className="email-link">{t('contact.email')}</a>
       </div>
     </section>
   )

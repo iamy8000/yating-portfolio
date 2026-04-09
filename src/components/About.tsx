@@ -55,7 +55,7 @@ export function About() {
             <p>
               <a href="https://www.linkedin.com/in/yang-ya-ting/" target="_blank" rel="noreferrer">{t('about.linkedin')} {'\u2197\uFE0E'}</a>
               {' \u2003 '}
-              <a href="mailto:yating.yy.yang@gmail.com">{t('about.email')} {'\u2197\uFE0E'}</a>
+              <a href="mailto:yang.yy.yating@gmail.com">{t('about.email')} {'\u2197\uFE0E'}</a>
             </p>
           </div>
         </div>
