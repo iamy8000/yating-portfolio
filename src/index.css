@@ -324,6 +324,96 @@ nav.nav-bar {
   background: var(--card-border);
 }
 
+/* Combined settings menu (theme + language), collapsed behind one icon */
+.nav-settings-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-settings-panel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  min-width: 150px;
+  background: var(--bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s, background 0.7s;
+  z-index: 210;
+}
+
+.nav-settings-panel-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-settings-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: var(--text);
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.nav-settings-item:hover {
+  background: var(--card-border);
+}
+
+.nav-settings-divider {
+  height: 1px;
+  background: var(--card-border);
+  margin: 0.15rem 0.3rem;
+}
+
+.nav-settings-lang {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem 0.25rem;
+}
+
+.nav-settings-lang-btn {
+  flex: 1;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 0.3rem 0;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-family: inherit;
+  color: var(--text-muted);
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.nav-settings-lang-btn:hover {
+  color: var(--text);
+}
+
+.nav-settings-lang-btn[aria-pressed="true"] {
+  color: var(--text);
+  border-color: var(--text-muted);
+  font-weight: 500;
+}
+
 /* 手機版：圓框語言切換鈕（與 theme 鈕同風格，顯示「另一個」語言） */
 .nav-lang-circle-btn {
   background: none;

@@ -7,12 +7,12 @@ export type Locale = 'en' | 'zh-TW'
 export const translations = {
   en: {
     nav: {
-      home: 'Home',
       projects: 'Projects',
       about: 'About',
       resume: 'Resume',
       subtitle: 'Full-Stack Engineer',
-      aria: { openMenu: 'Open menu', closeMenu: 'Close menu', toggleTheme: 'Toggle theme' },
+      settings: { light: 'Light mode', dark: 'Dark mode' },
+      aria: { openMenu: 'Open menu', closeMenu: 'Close menu', toggleTheme: 'Toggle theme', settings: 'Settings' },
     },
     hero: {
       rotator: [
@@ -162,12 +162,12 @@ export const translations = {
   },
   'zh-TW': {
     nav: {
-      home: '首頁',
       projects: '精選專案',
       about: '關於我',
       resume: '履歷',
       subtitle: '前端工程師',
-      aria: { openMenu: '開啟選單', closeMenu: '關閉選單', toggleTheme: '切換主題' },
+      settings: { light: '淺色模式', dark: '深色模式' },
+      aria: { openMenu: '開啟選單', closeMenu: '關閉選單', toggleTheme: '切換主題', settings: '設定' },
     },
     hero: {
       rotator: [

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
 import { useLanguage } from '../context/LanguageContext'
@@ -7,7 +7,6 @@ import type { Locale } from '../i18n/translations'
 const RESUME_URL = 'https://drive.google.com/file/d/1Nk4w9CPRc5VI38YxVyBuAZXBgTlk8OP8/view?usp=drive_link'
 
 const navKeys = [
-  { key: 'home' as const, href: '/', isRoute: true },
   { key: 'projects' as const, href: '/#projects', isRoute: false },
   { key: 'about' as const, href: '/about', isRoute: true },
   { key: 'resume' as const, href: RESUME_URL, isRoute: false, external: true },
@@ -32,6 +31,57 @@ function CloseIcon() {
   )
 }
 
+function GearIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </svg>
+  )
+}
+
+/** Combined theme + language control, collapsed behind a single settings icon. */
+function SettingsMenu({ variant }: { variant: 'desktop' | 'mobile' }) {
+  const { theme, toggleTheme } = useTheme()
+  const { t, locale, setLocale } = useLanguage()
+  const [open, setOpen] = useState(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const handleClick = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false)
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
+  }, [open])
+
+  return (
+    <div className={`nav-settings-wrap nav-settings-${variant}`} ref={wrapRef}>
+      <button
+        type="button"
+        className="lamp-btn nav-settings-btn"
+        onClick={() => setOpen((o) => !o)}
+        aria-label={t('nav.aria.settings')}
+        aria-expanded={open}
+      >
+        <GearIcon />
+      </button>
+      <div className={`nav-settings-panel ${open ? 'nav-settings-panel-open' : ''}`}>
+        <button type="button" className="nav-settings-item" onClick={toggleTheme}>
+          <span aria-hidden>{theme === 'dark' ? '💡' : '🌙'}</span>
+          <span>{theme === 'dark' ? t('nav.settings.light') : t('nav.settings.dark')}</span>
+        </button>
+        <div className="nav-settings-divider" />
+        <div className="nav-settings-lang">
+          <button type="button" className="nav-settings-lang-btn" onClick={() => setLocale('en' as Locale)} aria-pressed={locale === 'en'}>EN</button>
+          <button type="button" className="nav-settings-lang-btn" onClick={() => setLocale('zh-TW')} aria-pressed={locale === 'zh-TW'}>繁中</button>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function Nav() {
   const { theme, toggleTheme } = useTheme()
   const { t, locale, setLocale } = useLanguage()
@@ -47,7 +97,7 @@ export function Nav() {
           <sub>{t('nav.subtitle')}</sub>
         </a>
 
-        {/* Desktop: links + lang + theme */}
+        {/* Desktop: links + settings */}
         <ul className="nav-links">
           {navKeys.map((item) => (
             <li key={item.href}>
@@ -58,31 +108,14 @@ export function Nav() {
               )}
             </li>
           ))}
-          <li className="nav-lang-wrap">
-            <button type="button" className="nav-lang-btn" onClick={() => setLocale('en' as Locale)} aria-pressed={locale === 'en'}>EN</button>
-            <span className="nav-lang-sep">/</span>
-            <button type="button" className="nav-lang-btn" onClick={() => setLocale('zh-TW')} aria-pressed={locale === 'zh-TW'}>繁中</button>
-          </li>
           <li>
-            <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
-              {theme === 'dark' ? '💡' : '🌙'}
-            </button>
+            <SettingsMenu variant="desktop" />
           </li>
         </ul>
 
-        {/* Mobile: 圓框語言鈕（顯示另一個語言）+ theme + hamburger */}
+        {/* Mobile: settings + hamburger */}
         <div className="nav-mobile-actions">
-          <button
-            type="button"
-            className="nav-lang-circle-btn"
-            onClick={() => setLocale(locale === 'en' ? 'zh-TW' : ('en' as Locale))}
-            aria-label={locale === 'en' ? 'Switch to 繁中' : 'Switch to EN'}
-          >
-            {locale === 'en' ? '繁中' : 'EN'}
-          </button>
-          <button type="button" className="lamp-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
-            {theme === 'dark' ? '💡' : '🌙'}
-          </button>
+          <SettingsMenu variant="mobile" />
           <button
             type="button"
             className="nav-menu-btn"
@@ -133,6 +166,10 @@ export function Nav() {
             )
           ))}
           <div className="nav-overlay-lang" style={{ transitionDelay: `${0.1 + navKeys.length * 0.06}s` }}>
+            <button type="button" className="nav-overlay-lang-btn" onClick={toggleTheme} aria-label={t('nav.aria.toggleTheme')}>
+              {theme === 'dark' ? '💡' : '🌙'}
+            </button>
+            <span className="nav-overlay-lang-sep">·</span>
             <button type="button" className="nav-overlay-lang-btn" onClick={() => { setLocale('en' as Locale); closeMobile(); }} aria-pressed={locale === 'en'}>EN</button>
             <span className="nav-overlay-lang-sep">/</span>
             <button type="button" className="nav-overlay-lang-btn" onClick={() => { setLocale('zh-TW'); closeMobile(); }} aria-pressed={locale === 'zh-TW'}>繁中</button>
