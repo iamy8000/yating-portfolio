@@ -11,7 +11,7 @@ export const translations = {
       projects: 'Projects',
       about: 'About',
       resume: 'Resume',
-      subtitle: 'Frontend Engineer',
+      subtitle: 'Full-Stack Engineer',
       aria: { openMenu: 'Open menu', closeMenu: 'Close menu', toggleTheme: 'Toggle theme' },
     },
     hero: {
@@ -34,7 +34,7 @@ export const translations = {
         'hoping to finish a book',
         'on the subway this month 📙',
       ],
-      subtitle: 'Currently a Founding Full-Stack Engineer at',
+      subtitle: 'Previously a Founding Full-Stack Engineer at',
       subtitleConnNext: 'ConnNext',
       subtitleBased: 'Based in NY.',
       learnMore: 'Learn more about me :)',
