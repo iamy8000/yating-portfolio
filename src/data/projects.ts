@@ -27,7 +27,7 @@ export const projects: ProjectData[] = [
     id: 'connnext',
     title: 'ConnNext — Professional Networking Mobile App',
     description:
-      'A React Native/Expo networking app connecting job seekers, providers, and founders through AI-driven discovery, onboarding, and social feed features, built end-to-end as a founding engineer.',
+      'An AI-powered networking app I took from first commit to the App Store in four months.',
     tags: ['React Native', 'Expo', 'TypeScript', 'NestJS', 'Prisma', 'PostgreSQL', 'Clerk', 'AWS', 'NativeWind', 'Gluestack UI'],
     role: 'Founding Full-Stack Engineer',
     teamSize: '3 Engineers + 1 Designer',
@@ -59,7 +59,7 @@ export const projects: ProjectData[] = [
     id: 'osce-dental-training',
     title: 'DentalAI — OSCE Virtual Patient Training Platform',
     description:
-      'An AI-powered training platform that simulates OSCE (Objective Structured Clinical Examination) scenarios for dental students, pairing real-time LLM patient dialogue with automated EPA-based scoring.',
+      'An AI virtual patient that dental students practice clinical exams with, used by 70+ students in their final exam.',
     tags: ['React', 'TypeScript', 'NestJS', 'FastAPI', 'PostgreSQL', 'Auth0', 'LLM/AI', 'Tailwind CSS'],
     role: 'UI/UX Designer / Full-Stack Engineer',
     teamSize: '2',
@@ -97,7 +97,7 @@ export const projects: ProjectData[] = [
     id: 'ar-productivity',
     title: 'Unity-Based AR Productivity Mobile App',
     description:
-      'An immersive productivity mobile application built with Unity, blending interactive 3D characters with real-world context.',
+      'A to-do list brought into augmented reality, with 3D characters that live in your space.',
     tags: ['Unity', 'C#', 'TextMeshPro', 'Spline', 'Augmented Reality'],
     role: 'Developer',
     teamSize: '2',

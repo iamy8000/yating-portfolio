@@ -78,7 +78,7 @@ export const translations = {
         },
         'ar-productivity': {
           title: 'Unity-Based AR Productivity Mobile App',
-          description: 'An immersive productivity mobile application built with Unity, blending interactive 3D characters with real-world context.',
+          description: 'A to-do list brought into augmented reality, with 3D characters that live in your space.',
           role: 'Developer',
           teamOrg: 'Academic Team',
           details: 'Designed interactive 3D character behaviors and integrated AR overlays for real-world task management.',
@@ -233,7 +233,7 @@ export const translations = {
         },
         'ar-productivity': {
           title: 'Unity AR 生產力 App',
-          description: '以 Unity 打造的沉浸式生產力行動應用，結合 3D 角色與實境情境。',
+          description: '把待辦清單帶進擴增實境，讓 3D 角色出現在你身邊。',
           role: '開發者',
           teamOrg: '學術團隊',
           details: '設計 3D 角色互動行為，整合 AR 疊加於實境任務管理。',
