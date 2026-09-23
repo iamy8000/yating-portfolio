@@ -45,9 +45,9 @@ function HomePage() {
       <Nav />
       <Hero />
       <hr className="rule" />
-      <Projects />
-      <hr className="rule" />
       <About />
+      <hr className="rule" />
+      <Projects />
       <hr className="rule" />
       <Contact />
       <Footer />

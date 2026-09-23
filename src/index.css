@@ -889,6 +889,13 @@ h1.hero-title em { font-style: italic; }
   mix-blend-mode: soft-light;
 }
 
+@media (min-width: 1500px) {
+  .projects-bg-word {
+    top: 30px;
+    left: 20%;
+  }
+}
+
 @media (max-width: 1150px) {
   .projects-bg-word {
     top: 30px;
@@ -1081,6 +1088,23 @@ h1.hero-title em { font-style: italic; }
   transition: color 0.7s;
 }
 
+.project-detail-section {
+  max-width: 44rem;
+  margin-bottom: 2.5rem;
+}
+
+.project-detail-para {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
+  transition: color 0.7s;
+}
+
+.project-detail-para:last-child {
+  margin-bottom: 0;
+}
+
 .project-detail-meta-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1230,7 +1254,61 @@ h1.hero-title em { font-style: italic; }
   height: 100%;
 }
 
+.project-detail-shots {
+  display: grid;
+  gap: 1.5rem 1rem;
+  width: 100%;
+}
+
+.project-detail-shots:has(.project-detail-shot--mobile) {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.project-detail-shots:has(.project-detail-shot--desktop) {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.project-detail-shot {
+  margin: 0;
+}
+
+.project-detail-shot-img,
+.project-detail-shot-placeholder {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  display: block;
+  transition: border-color 0.7s, background 0.7s;
+}
+
+.project-detail-shot--mobile .project-detail-shot-placeholder { aspect-ratio: 9 / 19.5; }
+.project-detail-shot--desktop .project-detail-shot-placeholder { aspect-ratio: 16 / 10; }
+
+.project-detail-shot-placeholder {
+  background: var(--card-border);
+  border-style: dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.project-detail-shot-caption {
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+  transition: color 0.7s;
+}
+
+.project-detail-mockup:has(.project-detail-shots),
 .project-detail-mockup:has(.project-detail-demo-videos) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
   aspect-ratio: auto;
   padding: 0;
   background: transparent;

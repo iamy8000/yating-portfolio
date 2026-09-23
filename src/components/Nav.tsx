@@ -7,8 +7,8 @@ import type { Locale } from '../i18n/translations'
 const RESUME_URL = 'https://drive.google.com/file/d/1Nk4w9CPRc5VI38YxVyBuAZXBgTlk8OP8/view?usp=drive_link'
 
 const navKeys = [
-  { key: 'projects' as const, href: '/#projects', isRoute: false },
   { key: 'about' as const, href: '/about', isRoute: true },
+  { key: 'projects' as const, href: '/#projects', isRoute: false },
   { key: 'resume' as const, href: RESUME_URL, isRoute: false, external: true },
 ]
 

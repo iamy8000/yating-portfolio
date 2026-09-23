@@ -118,8 +118,31 @@ export function ProjectDetail() {
           </div>
 
           <div ref={ref3} className="project-detail-block fade-up" style={{ transitionDelay: '0.15s' }}>
-            <h2 className="project-detail-heading">{t('projects.details')}</h2>
-            <p className="project-detail-desc">{localized?.details ?? project.details}</p>
+            {project.overview?.length || project.whatIDid?.length ? (
+              <>
+                {project.overview?.length ? (
+                  <div className="project-detail-section">
+                    <h2 className="project-detail-heading">{t('projects.overview')}</h2>
+                    {project.overview.map((para, i) => (
+                      <p key={i} className="project-detail-para">{para}</p>
+                    ))}
+                  </div>
+                ) : null}
+                {project.whatIDid?.length ? (
+                  <div className="project-detail-section">
+                    <h2 className="project-detail-heading">{t('projects.whatIDid')}</h2>
+                    {project.whatIDid.map((para, i) => (
+                      <p key={i} className="project-detail-para">{para}</p>
+                    ))}
+                  </div>
+                ) : null}
+              </>
+            ) : (
+              <>
+                <h2 className="project-detail-heading">{t('projects.details')}</h2>
+                <p className="project-detail-desc">{localized?.details ?? project.details}</p>
+              </>
+            )}
           </div>
 
           <div ref={ref4} className="project-detail-block fade-up" style={{ transitionDelay: '0.2s' }}>
@@ -160,7 +183,23 @@ export function ProjectDetail() {
                   ))}
                 </div>
               )}
-              {(!project.demoVideos?.length && !project.demoImages?.length) && (
+              {project.screenshots && project.screenshots.length > 0 && (
+                <div className="project-detail-shots">
+                  {project.screenshots.map((shot, i) => (
+                    <figure key={i} className={`project-detail-shot project-detail-shot--${shot.device}`}>
+                      {shot.src ? (
+                        <img src={shot.src} alt={shot.caption} className="project-detail-shot-img" />
+                      ) : (
+                        <div className="project-detail-shot-placeholder">
+                          <span>{t('projects.screenshotsComing')}</span>
+                        </div>
+                      )}
+                      <figcaption className="project-detail-shot-caption">{shot.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              )}
+              {(!project.demoVideos?.length && !project.demoImages?.length && !project.screenshots?.length) && (
                 <span className="project-detail-mockup-text">{t('projects.screenshotsComing')}</span>
               )}
             </div>
