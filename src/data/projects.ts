@@ -14,7 +14,6 @@ export interface ProjectData {
   teamSize: string
   teamOrg: string
   details: string
-  // Paragraphs shown under "Overview" and "What I Did"; `details` is the fallback when absent
   overview?: string[]
   whatIDid?: string[]
   githubUrl?: string

@@ -45,9 +45,9 @@ function HomePage() {
       <Nav />
       <Hero />
       <hr className="rule" />
-      <About />
-      <hr className="rule" />
       <Projects />
+      <hr className="rule" />
+      <About />
       <hr className="rule" />
       <Contact />
       <Footer />
@@ -59,15 +59,15 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-      <ThemeSync>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/projects/:projectId" element={<ProjectDetail />} />
-          </Routes>
-        </BrowserRouter>
-      </ThemeSync>
+        <ThemeSync>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeSync>
       </LanguageProvider>
     </ThemeProvider>
   )
