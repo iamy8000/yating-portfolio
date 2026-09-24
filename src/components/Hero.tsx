@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 
 export function Hero() {
@@ -57,10 +58,10 @@ export function Hero() {
           {t('hero.subtitle')} <a href="https://connnext.com" target="_blank" rel="noopener noreferrer">{t('hero.subtitleConnNext')}</a>. {t('hero.subtitleBased')}
         </p>
         <div className="hero-cta-wrap">
-          <a href="#about" className="view-btn">
+          <Link to="/about" className="view-btn">
             <div className="view-btn-circle">{'\u2197\uFE0E'}</div>
             {t('hero.learnMore')}
-          </a>
+          </Link>
           <a href="#projects" className="view-btn">
             <div className="view-btn-circle">{'\u2197\uFE0E'}</div>
             {t('hero.viewProjects')}
