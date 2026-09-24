@@ -57,7 +57,7 @@ export function Hero() {
           {t('hero.subtitle')} <a href="https://connnext.com" target="_blank" rel="noopener noreferrer">{t('hero.subtitleConnNext')}</a>. {t('hero.subtitleBased')}
         </p>
         <div className="hero-cta-wrap">
-          <a href="/about" className="view-btn">
+          <a href="#about" className="view-btn">
             <div className="view-btn-circle">{'\u2197\uFE0E'}</div>
             {t('hero.learnMore')}
           </a>

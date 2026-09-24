@@ -1,33 +1,9 @@
-import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { useLanguage } from '../context/LanguageContext'
+import { useFadeIn } from '../hooks/useFadeIn'
 
 const PC_CLASSES = ['pc1', 'pc2', 'pc3', 'pc4'] as const
-
-function useFadeIn(threshold = 0.12) {
-  const ref = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible')
-            obs.unobserve(e.target)
-          }
-        })
-      },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-
-  return ref
-}
 
 export function Projects() {
   const { t, tr } = useLanguage()
@@ -75,11 +51,11 @@ function ProjectCard({
   pc: (typeof PC_CLASSES)[number]
   delay?: number
 }) {
-  const ref = useFadeIn(0.12)
+  const ref = useFadeIn<HTMLAnchorElement>(0.12)
 
   return (
     <Link
-      ref={ref as React.RefObject<HTMLAnchorElement>}
+      ref={ref}
       to={`/projects/${id}`}
       className={`project-card ${pc} fade-up`}
       style={{

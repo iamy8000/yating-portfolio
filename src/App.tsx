@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, useTheme } from './context/ThemeContext'
 import { LanguageProvider } from './context/LanguageContext'
 import { GrainCanvas } from './components/GrainCanvas'
@@ -11,6 +11,7 @@ import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ProjectDetail } from './pages/ProjectDetail'
 import { AboutPage } from './pages/AboutPage'
+import { useHashScroll } from './hooks/useHashScroll'
 
 const THEME_COLORS = { dark: '#0d1117', light: '#F0EFED' } as const
 
@@ -25,19 +26,7 @@ function ThemeSync({ children }: { children: React.ReactNode }) {
 }
 
 function HomePage() {
-  const { hash } = useLocation()
-
-  useEffect(() => {
-    if (!hash) return
-    const id = hash.slice(1)
-    if (!id) return
-    const scrollToEl = () => {
-      const el = document.getElementById(id)
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-    const t = setTimeout(scrollToEl, 50)
-    return () => clearTimeout(t)
-  }, [hash])
+  useHashScroll()
 
   return (
     <>

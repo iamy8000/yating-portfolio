@@ -1,5 +1,5 @@
-import { useRef, useEffect } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import { useFadeIn } from '../hooks/useFadeIn'
 
 interface ExperienceItemType {
   period: string
@@ -14,28 +14,6 @@ interface EducationItemType {
   title: string
   school: string
   detail?: string
-}
-
-function useFadeIn(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible')
-            obs.unobserve(e.target)
-          }
-        })
-      },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return ref
 }
 
 export function Experience() {

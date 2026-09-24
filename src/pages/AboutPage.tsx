@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
+import { useHashScroll } from '../hooks/useHashScroll'
 import { Nav } from '../components/Nav'
 import { Experience } from '../components/Experience'
 import { MeSection } from '../components/MeSection'
@@ -11,25 +11,14 @@ type ScrollTarget = 'experience' | 'outside' | null
 type ScrollDirection = 'up' | 'down'
 
 export function AboutPage() {
-  const { hash } = useLocation()
   const { t } = useLanguage()
   const [scrollTarget, setScrollTarget] = useState<ScrollTarget>(null)
   const [scrollDirection, setScrollDirection] = useState<ScrollDirection>('down')
+  useHashScroll(100)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  useEffect(() => {
-    if (!hash) return
-    const id = hash.slice(1)
-    if (!id) return
-    const el = document.getElementById(id)
-    if (el) {
-      const t = setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)
-      return () => clearTimeout(t)
-    }
-  }, [hash])
 
   useEffect(() => {
     const me = document.getElementById('me')
@@ -75,11 +64,7 @@ export function AboutPage() {
   }, [])
 
   const scrollToTarget = () => {
-    if (scrollTarget === 'experience') {
-      document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    } else if (scrollTarget === 'outside') {
-      document.getElementById('outside')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    if (scrollTarget) document.getElementById(scrollTarget)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
@@ -109,7 +94,7 @@ export function AboutPage() {
               {scrollTarget === 'experience' ? t('aboutPage.workExperience') : t('aboutPage.outsideOfWork')}
             </span>
             <span className="about-scroll-hint-arrow">
-              {scrollDirection === 'up' ? '\u2191\uFE0E' : '\u2193\uFE0E'}
+              {scrollDirection === 'up' ? '↑︎' : '↓︎'}
             </span>
           </span>
         </button>

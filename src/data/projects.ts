@@ -59,7 +59,7 @@ export const projects: ProjectData[] = [
     id: 'osce-dental-training',
     title: 'DentalAI — OSCE Virtual Patient Training Platform',
     description:
-      'An AI virtual patient that dental students practice clinical exams with, used by 70+ students in their final exam.',
+      'An AI virtual patient that dental students practice clinical exams with, used at Kaohsiung Medical University and Chung Shan Medical University.',
     tags: ['React', 'TypeScript', 'NestJS', 'FastAPI', 'PostgreSQL', 'Auth0', 'LLM/AI', 'Tailwind CSS'],
     role: 'UI/UX Designer / Full-Stack Engineer',
     teamSize: '2',
@@ -76,7 +76,7 @@ export const projects: ProjectData[] = [
       'The heart of it is the real-time chat with the virtual patient. I built the chat experience and the NestJS layer behind it, which saves the conversation as it happens and passes the checkpoints and common mistakes a student triggered to the Azure OpenAI scoring workflow.',
       'An exam can\'t be allowed to fail halfway, so much of my backend work went into making it dependable. Each training session runs on a server-side state machine that blocks duplicate attempts, checks that a session belongs to the student opening it, lets students resume, and retries scoring when it fails. When a teacher edits a case, the change doesn\'t reach tasks that were already assigned, because each task keeps its own snapshot of the case.',
       'Scores only help if people can act on them, so I built the charts that show them. Teachers get class statistics: the spread of EPA levels, a score histogram, an ACGME radar chart, and a ranking of common mistakes, with CSV and PDF export. Students get a scoring report with a weighted breakdown of their multiple-choice answers and growth-trend charts across attempts.',
-      'The platform was used by more than 70 dental students in a clinical final exam.',
+      'The platform is used by dental students at Kaohsiung Medical University and Chung Shan Medical University.',
     ],
     demoImages: [],
     // demoImages: ['/images/projects/osce-dental-training-1.png', '/images/projects/osce-dental-training-2.png', '/images/projects/osce-dental-training-3.png'],

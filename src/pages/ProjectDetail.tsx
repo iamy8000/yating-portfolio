@@ -1,31 +1,10 @@
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { Nav } from '../components/Nav'
 import { Footer } from '../components/Footer'
 import { useLanguage } from '../context/LanguageContext'
-
-function useFadeIn(threshold = 0.12) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible')
-            obs.unobserve(e.target)
-          }
-        })
-      },
-      { threshold }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [threshold])
-  return ref
-}
+import { useFadeIn } from '../hooks/useFadeIn'
 
 function ArrowLeftIcon() {
   return (
