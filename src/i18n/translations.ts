@@ -179,7 +179,7 @@ export const translations = {
       running: { title: 'Running', desc: "I love running. Currently doing NYRR's 9+1 for the 2027 NYC Marathon and training for Copenhagen in May 2027. Check out my {{STRAVA}} — and I'll kudo back!" },
       writing: { title: 'Writing', desc: 'I write on {{MEDIUM}} — travel, life reflections, and some random thoughts.' },
       cornerMaps: { title: 'Corner Maps', desc: "I curate lists for drinks, food, and laptop-friendly cafes on {{CORNER}} — my fav app in 2025 & 2026!" },
-      hiking: { title: 'Hiking & Camping', desc: "Slowly working through my 'maybe I'll finally go on long hikes' list. Nothing beats a weekend with no signal and a tent." },
+      hiking: { title: 'Hiking & Camping', desc: 'Nothing beats a weekend with no signal and a tent. Slowly working through my AllTrails lists: {{HIKE_LONG}}, {{HIKE_VIEW}}, and {{HIKE_TRAVEL}}.' },
       travel: { title: 'Travel', desc: 'The world is one big bucket list. I write about the trips that stayed with me on {{MEDIUM}}.' },
       // TODO: replace with a sixth thing you love
       placeholder: { title: 'Coming soon', desc: 'More to share here soon.' },
@@ -357,7 +357,7 @@ export const translations = {
       running: { title: '跑步', desc: '喜歡跑步，目前在跑 NYRR 9+1 準備 2027 紐約馬拉松，也在練 2027 年 5 月的哥本哈根馬拉松。歡迎到 {{STRAVA}} 看看 — 我會給 kudo！' },
       writing: { title: '寫作', desc: '在 {{MEDIUM}} 寫旅行、生活與一些雜感。' },
       cornerMaps: { title: 'Corner Maps', desc: '在 {{CORNER}} 整理飲料、食物與適合帶筆電的咖啡廳清單 — 2025、2026 最愛用的 app！' },
-      hiking: { title: '健行與露營', desc: '慢慢完成我那份「也許今年終於會去長程健行？」的清單。沒有訊號、只有帳篷的週末，是最好的週末。' },
+      hiking: { title: '健行與露營', desc: '沒有訊號、只有帳篷的週末，是最好的週末。正在慢慢完成我在 AllTrails 上的清單：{{HIKE_LONG}}、{{HIKE_VIEW}}、{{HIKE_TRAVEL}}。' },
       travel: { title: '旅行', desc: '世界是一張很大的 bucket list。那些讓我念念不忘的旅程，我都寫在 {{MEDIUM}} 上。' },
       // TODO: 換成第六件你喜歡的事
       placeholder: { title: '即將更新', desc: '這裡之後會有更多分享。' },
