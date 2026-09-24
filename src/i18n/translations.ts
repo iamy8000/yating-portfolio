@@ -180,9 +180,8 @@ export const translations = {
       writing: { title: 'Writing', desc: 'I write on {{MEDIUM}} — travel, life reflections, and some random thoughts.' },
       cornerMaps: { title: 'Corner Maps', desc: "I curate lists for drinks, food, and laptop-friendly cafes on {{CORNER}} — my fav app in 2025 & 2026!" },
       hiking: { title: 'Hiking & Camping', desc: 'Nothing beats a weekend with no signal and a tent. Slowly working through my AllTrails lists: {{HIKE_LONG}}, {{HIKE_VIEW}}, and {{HIKE_TRAVEL}}.' },
-      travel: { title: 'Travel', desc: 'The world is one big bucket list. I write about the trips that stayed with me on {{MEDIUM}}.' },
-      // TODO: replace with a sixth thing you love
-      placeholder: { title: 'Coming soon', desc: 'More to share here soon.' },
+      travel: { title: 'Travel', desc: 'The world is one big bucket list. A couple of trips I wrote about: {{TRIP_LATAM}} and {{TRIP_HWY50}}.' },
+      albums: { title: 'Photo Albums', desc: 'More photos from the road: glacier hikes in {{ALBUM_ARGENTINA}}, the towers of {{ALBUM_PATAGONIA}}, music and cigars in {{ALBUM_CUBA}}, and mountains in {{ALBUM_XINJIANG}}.' },
     },
   },
   'zh-TW': {
@@ -358,9 +357,8 @@ export const translations = {
       writing: { title: '寫作', desc: '在 {{MEDIUM}} 寫旅行、生活與一些雜感。' },
       cornerMaps: { title: 'Corner Maps', desc: '在 {{CORNER}} 整理飲料、食物與適合帶筆電的咖啡廳清單 — 2025、2026 最愛用的 app！' },
       hiking: { title: '健行與露營', desc: '沒有訊號、只有帳篷的週末，是最好的週末。正在慢慢完成我在 AllTrails 上的清單：{{HIKE_LONG}}、{{HIKE_VIEW}}、{{HIKE_TRAVEL}}。' },
-      travel: { title: '旅行', desc: '世界是一張很大的 bucket list。那些讓我念念不忘的旅程，我都寫在 {{MEDIUM}} 上。' },
-      // TODO: 換成第六件你喜歡的事
-      placeholder: { title: '即將更新', desc: '這裡之後會有更多分享。' },
+      travel: { title: '旅行', desc: '世界是一張很大的 bucket list。我寫過的幾趟旅程：{{TRIP_LATAM}}，以及{{TRIP_HWY50}}。' },
+      albums: { title: '旅行相簿', desc: '更多旅途中的照片：{{ALBUM_ARGENTINA}}的冰川健行、{{ALBUM_PATAGONIA}}的三塔、{{ALBUM_CUBA}}的音樂與雪茄，還有{{ALBUM_XINJIANG}}的大山好水。' },
     },
   },
 } as const
