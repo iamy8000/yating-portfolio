@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { projects } from '../data/projects'
 import { Nav } from '../components/Nav'
@@ -38,11 +38,36 @@ export function ProjectDetail() {
   const ref2 = useFadeIn(0.12)
   const ref3 = useFadeIn(0.12)
   const ref4 = useFadeIn(0.12)
-  const ref5 = useFadeIn(0.12)
+  // The screenshots block can be taller than several screens, so any ratio above 0 may never be reached
+  const ref5 = useFadeIn(0)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [projectId])
+
+  // Lightbox: index into the screenshots that have an image
+  const shots = project?.screenshots?.filter((s) => s.src) ?? []
+  const [openShot, setOpenShot] = useState<number | null>(null)
+
+  useEffect(() => {
+    setOpenShot(null)
+  }, [projectId])
+
+  useEffect(() => {
+    if (openShot === null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenShot(null)
+      if (e.key === 'ArrowRight') setOpenShot((i) => (i === null ? i : (i + 1) % shots.length))
+      if (e.key === 'ArrowLeft') setOpenShot((i) => (i === null ? i : (i - 1 + shots.length) % shots.length))
+    }
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = prevOverflow
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [openShot, shots.length])
 
   if (!project) {
     return (
@@ -167,7 +192,14 @@ export function ProjectDetail() {
                   {project.screenshots.map((shot, i) => (
                     <figure key={i} className={`project-detail-shot project-detail-shot--${shot.device}`}>
                       {shot.src ? (
-                        <img src={shot.src} alt={shot.caption} className="project-detail-shot-img" />
+                        <button
+                          type="button"
+                          className="project-detail-shot-zoom"
+                          onClick={() => setOpenShot(shots.indexOf(shot))}
+                          aria-label={`${t('projects.enlargeImage')}: ${shot.caption}`}
+                        >
+                          <img src={shot.src} alt={shot.caption} className="project-detail-shot-img" loading="lazy" />
+                        </button>
                       ) : (
                         <div className="project-detail-shot-placeholder">
                           <span>{t('projects.screenshotsComing')}</span>
@@ -186,6 +218,48 @@ export function ProjectDetail() {
         </div>
       </div>
       <Footer />
+      {openShot !== null && shots[openShot] && (
+        <div className="shot-lightbox" role="dialog" aria-modal="true" onClick={() => setOpenShot(null)}>
+          <img
+            src={shots[openShot].src}
+            alt={shots[openShot].caption}
+            className="shot-lightbox-img"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <p className="shot-lightbox-caption" onClick={(e) => e.stopPropagation()}>
+            {shots[openShot].caption} · {openShot + 1} / {shots.length}
+          </p>
+          <button type="button" className="shot-lightbox-btn shot-lightbox-close" aria-label={t('projects.closeImage')} onClick={() => setOpenShot(null)}>
+            ✕
+          </button>
+          {shots.length > 1 && (
+            <>
+              <button
+                type="button"
+                className="shot-lightbox-btn shot-lightbox-prev"
+                aria-label={t('projects.prevImage')}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setOpenShot((openShot - 1 + shots.length) % shots.length)
+                }}
+              >
+                ←
+              </button>
+              <button
+                type="button"
+                className="shot-lightbox-btn shot-lightbox-next"
+                aria-label={t('projects.nextImage')}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setOpenShot((openShot + 1) % shots.length)
+                }}
+              >
+                →
+              </button>
+            </>
+          )}
+        </div>
+      )}
     </>
   )
 }

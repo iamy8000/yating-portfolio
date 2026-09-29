@@ -73,6 +73,10 @@ export const translations = {
       viewOnGithub: 'View on GitHub',
       demoMockups: 'Demo & Mockups',
       screenshotsComing: 'Screenshots / demo coming soon',
+      enlargeImage: 'Enlarge screenshot',
+      closeImage: 'Close',
+      prevImage: 'Previous screenshot',
+      nextImage: 'Next screenshot',
       list: {
         'dog-adoption': {
           title: 'Dog Adoption Web App',
@@ -245,6 +249,10 @@ export const translations = {
       viewOnGithub: '在 GitHub 查看',
       demoMockups: '展示與 Mockup',
       screenshotsComing: '截圖 / 展示即將上線',
+      enlargeImage: '放大截圖',
+      closeImage: '關閉',
+      prevImage: '上一張截圖',
+      nextImage: '下一張截圖',
       list: {
         'dog-adoption': {
           title: '狗狗領養網站',
