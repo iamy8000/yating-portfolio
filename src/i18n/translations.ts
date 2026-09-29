@@ -49,7 +49,7 @@ export const translations = {
       learnMore: 'Read my story',
       engineer: {
         title: 'Engineer Amy',
-        body: "I'm a full-stack engineer with 4+ years of shipping TypeScript, React, React Native, and NestJS. Most recently, I was a founding engineer at ConnNext, where I took a React Native app to the App Store in four months, and a full-stack engineer at ITRI, building an AI virtual patient used by dental students at Kaohsiung Medical University and Chung Shan Medical University. Before engineering, I worked in advertising at Ogilvy on campaigns for Nike and Google Play. That mix has made me comfortable translating between technical systems and the people using them, thinking about both how a system works and how to make it clear and useful.",
+        body: "I'm a full-stack engineer with 4+ years of shipping TypeScript, React, React Native, and NestJS. Most recently, I was a founding engineer at ConnNext, where I took a React Native app to the App Store in four months, and a full-stack engineer at the Industrial Technology Research Institute (ITRI), building an AI virtual patient used by dental students at Kaohsiung Medical University and Chung Shan Medical University. Before engineering, I worked in advertising at Ogilvy on campaigns for Nike and Google Play. That mix has made me comfortable translating between technical systems and the people using them, thinking about both how a system works and how to make it clear and useful.",
       },
       person: {
         title: 'Just Amy',
@@ -128,12 +128,6 @@ export const translations = {
       linkedin: 'LinkedIn',
       email: 'Email',
     },
-    aboutPage: {
-      scrollToExperience: 'Scroll to Work Experience',
-      scrollToOutside: 'Scroll to Outside of Work',
-      workExperience: 'Work experience',
-      outsideOfWork: 'Outside of work',
-    },
     me: {
       label: 'About Me',
       engineer: {
@@ -141,10 +135,9 @@ export const translations = {
         link: 'See my work experience',
         paras: [
           "I'm a full-stack engineer in New York with 4+ years of experience across startups and growth-stage teams, working mostly in TypeScript, React, React Native, and NestJS. I like owning features end to end, from the experience users interact with to the systems and architecture that power it.",
-          "Most recently, I was a founding engineer at ConnNext, where I shipped a React Native app to the App Store in four months, and a full-stack engineer at ITRI, where I built an AI virtual-patient platform used by dental students at Kaohsiung Medical University and Chung Shan Medical University. Before that, I built AI-powered dashboards and planning tools at Tymeline, and Taiwan's first NFT marketplace at Tagnology.",
-          "My background started outside traditional computer science. I studied advertising and spent two years at Ogilvy in Taipei working on campaigns for Nike and Google Play before moving into software engineering through a bootcamp and later a master's in Information Management at the University of Maryland.",
-          "Advertising taught me to start with the person on the other side—how they think, what catches their attention, and how to communicate an idea clearly. I've carried that mindset into engineering. Whether I'm building a frontend, designing an API, or working on an AI-powered product, I think about both how the system works underneath and how that complexity ultimately becomes an experience that feels simple and intuitive to the user.",
-          "Since making the transition, I've worked across frontend, backend, mobile, blockchain, and AI-powered products. I enjoy sitting at that intersection of product and engineering: understanding the technical details while keeping sight of the people we're building for.",
+          "Most recently, I was a founding engineer at ConnNext, where I shipped a React Native app to the App Store in four months, and a full-stack engineer at the Industrial Technology Research Institute (ITRI), where I built an AI virtual-patient platform used by dental students at Kaohsiung Medical University and Chung Shan Medical University. Before that, I built AI-powered dashboards and planning tools at Tymeline, and Taiwan's first NFT marketplace at Tagnology.",
+          "My background started outside traditional computer science. I studied advertising, including business, consumer behavior, and design, and spent two years at Ogilvy in Taipei working on campaigns for Nike and Google Play. There, I talked to consumers, learned to understand what clients were trying to achieve, and worked across teams to move projects forward. I later moved into software engineering through a bootcamp and a master's in Information Management at the University of Maryland.",
+          "Advertising taught me to start with the person on the other side: how they think, what catches their attention, and how to communicate an idea clearly. It also taught me to consider the business goal behind the work and collaborate with people who see the problem from different angles. Since making the transition, I've brought that perspective to engineering, working through the technical complexity behind a product while making the experience feel simple and intuitive to the people using it.",
         ],
       },
       person: {
@@ -163,7 +156,7 @@ export const translations = {
       aria: { companyLink: 'Company link' },
       items: [
         { period: 'Jan 2026 – Jul 2026', title: 'Founding Engineer', company: 'ConnNext', description: 'Owned frontend development end to end for a pre-seed AI-powered social networking app as the sole frontend engineer, shipping the React Native / Expo app to the Apple App Store within 4 months.', tags: ['React Native', 'Expo', 'TypeScript', 'NestJS', 'TanStack Query'] },
-        { period: 'Feb 2026 – Jun 2026', title: 'Full-Stack Engineer', company: 'ITRI', description: 'Owned full-stack development for an AI virtual-patient OSCE platform integrating Azure OpenAI, used by dental students at Kaohsiung Medical University and Chung Shan Medical University.', tags: ['React', 'TypeScript', 'NestJS', 'TypeORM', 'Azure OpenAI'] },
+        { period: 'Feb 2026 – Jun 2026', title: 'Full-Stack Engineer', company: 'The Industrial Technology Research Institute (ITRI)', description: 'Owned full-stack development for an AI virtual-patient OSCE platform integrating Azure OpenAI, used by dental students at Kaohsiung Medical University and Chung Shan Medical University.', tags: ['React', 'TypeScript', 'NestJS', 'TypeORM', 'Azure OpenAI'] },
         { period: 'Aug 2024 – Jul 2025', title: 'Frontend Developer', company: 'Tymeline', description: 'Built core UI components and data-driven dashboards for an AI-powered performance platform, improving development efficiency and enabling large-scale data visualization.', tags: ['React', 'JavaScript', 'Redux', 'TypeScript', 'Playwright', 'AWS'] },
         // { period: 'Jul 2024 – Jul 2025', title: 'Software Engineer', company: 'IpserLab', description: 'Developed and launched a real-time WebRTC video platform, leading UI/UX redesign and improving accessibility, interaction, and performance.', tags: ['React', 'JavaScript', 'WebRTC'] },
         // { period: 'Sep 2023 – May 2024', title: 'Teaching Assistant, Python Programming', company: 'University of Maryland', description: 'Led Python lab sessions and supported student projects, helping simplify technical concepts and improve hands-on coding skills.', tags: ['Python'] },
@@ -307,12 +300,6 @@ export const translations = {
       linkedin: 'LinkedIn',
       email: 'Email',
     },
-    aboutPage: {
-      scrollToExperience: '捲動至工作經驗',
-      scrollToOutside: '捲動至工作之外',
-      workExperience: '工作經驗',
-      outsideOfWork: '工作之外',
-    },
     me: {
       label: '關於我',
       engineer: {
@@ -321,9 +308,8 @@ export const translations = {
         paras: [
           '我是現居紐約的全端工程師，在新創與成長期團隊累積了 4 年以上經驗，主要使用 TypeScript、React、React Native 與 NestJS。我喜歡從頭到尾負責一個功能，從使用者互動的體驗，到背後支撐它的系統與架構。',
           '最近我在 ConnNext 擔任創始工程師，四個月內將 React Native app 上架 App Store；也在工研院擔任全端工程師，打造 AI 虛擬病人平台，已在高雄醫學大學與中山醫學大學的牙醫系使用。在那之前，我在 Tymeline 開發 AI 驅動的儀表板與規劃工具，也在 Tagnology 打造了台灣第一個 NFT 市集。',
-          '我的背景不是傳統的資工出身。我大學念廣告，在台北奧美工作兩年，參與 Nike 與 Google Play 的專案，之後透過 bootcamp 轉職成軟體工程師，再到馬里蘭大學念資訊管理碩士。',
-          '廣告教會我從螢幕另一端的人出發——他們怎麼想、什麼會吸引他們的注意、如何把一個想法清楚地傳達出去。我把這樣的思維帶進了工程。無論是開發前端、設計 API，還是做 AI 相關的產品，我都會同時思考系統底層如何運作，以及這些複雜度最終如何變成對使用者來說簡單、直覺的體驗。',
-          '轉職之後，我做過前端、後端、行動裝置、區塊鏈，以及 AI 相關的產品。我很享受待在產品與工程的交會點：理解技術細節的同時，也始終記得我們是為了誰而打造。',
+          '我的背景不是傳統的資工出身。我大學念廣告，學了商業、消費者行為與設計，之後在台北奧美工作兩年，參與 Nike 與 Google Play 的專案。在那裡，我和消費者對話、學著理解客戶真正想達成的目標，並跨團隊協作推動專案前進。後來我透過 bootcamp 轉職成軟體工程師，再到馬里蘭大學念資訊管理碩士。',
+          '廣告教會我從另一端的人出發：他們怎麼想、什麼會吸引他們的注意、如何把一個想法清楚地傳達出去。它也教會我思考工作背後的商業目標，並和從不同角度看問題的人合作。轉職之後，我把這樣的視角帶進了工程，一邊處理產品背後的技術複雜度，一邊讓使用者的體驗感覺簡單又直覺。',
         ],
       },
       person: {
