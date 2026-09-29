@@ -1233,7 +1233,10 @@ h1.hero-title em { font-style: italic; }
 }
 
 .project-detail-shots:has(.project-detail-shot--mobile) {
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  --shots-width: min(64rem, calc(100vw - 4rem));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 140px), 1fr));
+  width: var(--shots-width);
+  margin-left: calc((100% - var(--shots-width)) / 2);
 }
 
 /* Desktop UI thumbnails: two columns, breaking out wider than the text column; click opens the lightbox */
